@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRYVE® — Não é só Marketing. É Direção.</title>
+  <meta name="description" content="Criamos o caminho para marcas que querem crescer. Estratégia, posicionamento e presença digital para o universo fitness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:      #F06B28;
+      --orange-dark: #C9521A;
+      --orange-light:#FFF0E8;
+      --teal:        #00B4AE;
+      --teal-dark:   #008C87;
+      --teal-light:  #E0F7F6;
+      --black:       #111111;
+      --gray:        #6B6B6B;
+      --light:       #F5F4F2;
+      --white:       #FFFFFF;
+      --border:      rgba(17,17,17,0.1);
+      --font-d: 'Barlow Condensed', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--black); font-family: var(--font-b); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    ::selection { background: var(--orange); color: #fff; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 5vw; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+    nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo { display: flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+    .logo-word { font-family: var(--font-d); font-size: 2rem; font-weight: 900; letter-spacing: 0.04em; color: var(--teal); line-height: 1; }
+    .logo-reg { font-size: 0.6rem; color: var(--teal); vertical-align: super; }
+    .logo-bar { width: 3px; height: 26px; background: var(--orange); border-radius: 2px; margin-left: 3px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--font-d); font-size: 1rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { background: var(--orange) !important; color: #fff !important; padding: 0.55rem 1.4rem; border-radius: 3px; }
+    .nav-cta:hover { background: var(--orange-dark) !important; }
+    .nav-ham { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-ham span { display: block; width: 26px; height: 2px; background: var(--black); border-radius: 2px; transition: 0.3s; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+    .hero-l { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5vw; }
+    .eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 2rem; opacity: 0; animation: fu 0.6s ease 0.1s forwards; }
+    .eyebrow-bar { width: 30px; height: 2px; background: var(--orange); }
+    .eyebrow-text { font-family: var(--font-d); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); }
+    .hero-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(3.2rem, 5.5vw, 5.8rem); line-height: 0.91; text-transform: uppercase; margin-bottom: 1.8rem; opacity: 0; animation: fu 0.7s ease 0.2s forwards; }
+    .c-or { color: var(--orange); }
+    .c-tl { color: var(--teal); }
+    .c-str { -webkit-text-stroke: 2px var(--black); color: transparent; }
+    .hero-p { font-size: 1rem; color: var(--gray); line-height: 1.75; max-width: 440px; margin-bottom: 2.6rem; font-weight: 400; opacity: 0; animation: fu 0.7s ease 0.35s forwards; }
+    .hero-p strong { color: var(--black); font-weight: 600; }
+    .hero-btns { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fu 0.7s ease 0.5s forwards; }
+    .btn-or { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--orange); color: #fff; padding: 0.9rem 2rem; font-family: var(--font-d); font-size: 1rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+    .btn-or:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,107,40,0.35); }
+    .btn-tl { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--teal); padding: 0.9rem 2rem; font-family: var(--font-d); font-size: 1rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--teal); border-radius: 3px; transition: background 0.2s, color 0.2s, transform 0.15s; }
+    .btn-tl:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); opacity: 0; animation: fu 0.7s ease 0.65s forwards; flex-wrap: wrap; }
+    .s-num { font-family: var(--font-d); font-size: 2.4rem; font-weight: 900; line-height: 1; color: var(--orange); }
+    .s-lbl { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+    .hero-r { background: var(--orange); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 5rem 4rem; position: relative; overflow: hidden; opacity: 0; animation: fi 0.9s ease 0.4s forwards; }
+    .hero-r-pat { position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 18px); }
+    .hero-r-inner { position: relative; z-index: 1; }
+    .hero-q { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.6rem, 4.2vw, 4.8rem); line-height: 0.91; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; }
+    .hero-q em { font-style: normal; color: var(--black); }
+    .hero-qs { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.65; max-width: 340px; border-left: 3px solid rgba(255,255,255,0.35); padding-left: 1rem; margin-bottom: 2rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.7rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 0.55rem 1.2rem; border-radius: 30px; }
+    .hero-badge span { font-family: var(--font-d); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
+    .bdot { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    @keyframes fu { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fi { from{opacity:0;} to{opacity:1;} }
+
+    /* MARQUEE */
+    .mq { background: var(--teal); padding: 1rem 0; overflow: hidden; }
+    .mq-track { display: flex; gap: 2.5rem; animation: mq 24s linear infinite; width: max-content; }
+    .mq:hover .mq-track { animation-play-state: paused; }
+    .mq-item { display: flex; align-items: center; gap: 0.6rem; white-space: nowrap; font-family: var(--font-d); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; }
+    .mq-sep { color: rgba(255,255,255,0.35); }
+    @keyframes mq { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+    /* SHARED */
+    section { padding: 6rem 5vw; }
+    .stag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
+    .stag::before { content: ''; width: 20px; height: 2px; background: var(--orange); }
+    .sh { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.6rem, 4.5vw, 4.5rem); line-height: 0.92; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .sp { font-size: 1rem; color: var(--gray); max-width: 480px; line-height: 1.75; }
+
+    /* SERVICES */
+    #services { background: var(--light); }
+    .srv-hd { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap; }
+    .srv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .sc { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 2.2rem 1.8rem; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; cursor: default; }
+    .sc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+    .sc:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.08); border-color: rgba(240,107,40,0.2); }
+    .sc:hover::before { transform: scaleX(1); }
+    .sc.teal::before { background: var(--teal); }
+    .sc.teal:hover { border-color: rgba(0,180,174,0.2); }
+    .sc-icon { width: 46px; height: 46px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.3rem; }
+    .sc-icon.or { background: var(--orange-light); }
+    .sc-icon.tl { background: var(--teal-light); }
+    .sc-name { font-family: var(--font-d); font-size: 1.2rem; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .sc-desc { font-size: 0.87rem; color: var(--gray); line-height: 1.7; }
+
+    /* KEYWORDS */
+    .kw-band { background: var(--teal); padding: 5rem 5vw; }
+    .kw-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2.5rem; }
+    .kw-lbl { font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .kw-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.8rem, 6vw, 6rem); line-height: 0.9; text-transform: uppercase; color: #fff; }
+    .kw-h em { font-style: normal; color: var(--black); }
+    .kw-pills { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+    .kp { font-family: var(--font-d); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); padding: 0.5rem 1.2rem; border-radius: 30px; cursor: default; transition: background 0.2s, border-color 0.2s; }
+    .kp:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+    .kp.s { background: var(--black); border-color: var(--black); }
+
+    /* ABOUT */
+    #about { background: var(--black); color: #fff; }
+    .ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .ab-stag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
+    .ab-stag::before { content: ''; width: 20px; height: 2px; background: var(--orange); }
+    .ab-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(3rem, 5vw, 5.5rem); line-height: 0.9; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; }
+    .ab-sub { font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 420px; font-weight: 300; }
+    .ab-cards { display: flex; flex-direction: column; gap: 1.4rem; }
+    .ac { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 1.7rem; transition: background 0.3s, border-color 0.3s; }
+    .ac:hover { background: rgba(255,255,255,0.07); border-color: rgba(240,107,40,0.3); }
+    .ac-hd { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+    .ac-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .ac-dot.tl { background: var(--teal); }
+    .ac h4 { font-family: var(--font-d); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+    .ac p { font-size: 0.87rem; color: rgba(255,255,255,0.48); line-height: 1.7; padding-left: 1.4rem; }
+
+    /* PROCESS */
+    #process { background: var(--light); }
+    .pr-hd { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap; }
+    .pr-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--border); }
+    .ps { background: var(--white); padding: 2.5rem 1.8rem; transition: background 0.3s; }
+    .ps:hover { background: #fafafa; }
+    .ps-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.4rem; }
+    .ps-n { font-family: var(--font-d); font-size: 3.5rem; font-weight: 900; line-height: 1; color: rgba(17,17,17,0.07); transition: color 0.3s; }
+    .ps:hover .ps-n { color: rgba(240,107,40,0.12); }
+    .ps-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--orange); margin-top: 0.4rem; }
+    .ps:nth-child(even) .ps-dot { background: var(--teal); }
+    .ps-t { font-family: var(--font-d); font-size: 1.2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .ps-d { font-size: 0.86rem; color: var(--gray); line-height: 1.7; }
+
+    /* CTA */
+    #cta { background: var(--orange); position: relative; overflow: hidden; padding: 7rem 5vw; }
+    #cta .bg-p { position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 18px); }
+    .cta-in { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+    .cta-ey { font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .cta-ey::before { content: ''; width: 20px; height: 2px; background: rgba(255,255,255,0.45); }
+    .cta-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(3.2rem, 6vw, 6.5rem); line-height: 0.88; text-transform: uppercase; color: #fff; margin-bottom: 1.5rem; }
+    .cta-h em { font-style: normal; color: var(--black); }
+    .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.65; max-width: 420px; }
+    .btn-wh { display: inline-flex; align-items: center; gap: 0.6rem; background: #fff; color: var(--orange); padding: 1.1rem 2.2rem; font-family: var(--font-d); font-size: 1.1rem; font-weight: 900; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; border-radius: 3px; white-space: nowrap; transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s; }
+    .btn-wh:hover { background: var(--black); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+    .btn-wh .arr { transition: transform 0.2s; }
+    .btn-wh:hover .arr { transform: translateX(4px); }
+    .cta-ig { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .cta-ig:hover { color: #fff; }
+
+    /* FOOTER */
+    footer { background: var(--black); color: #fff; padding: 4rem 5vw 2.5rem; }
+    .ft-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+    .ft-logo { font-family: var(--font-d); font-size: 2.1rem; font-weight: 900; letter-spacing: 0.04em; color: var(--teal); text-decoration: none; display: block; margin-bottom: 0.6rem; }
+    .ft-tag { font-size: 0.84rem; color: rgba(255,255,255,0.38); font-weight: 300; line-height: 1.6; margin-bottom: 1.5rem; }
+    .ft-soc { display: flex; gap: 0.7rem; }
+    .ft-sb { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.14); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .ft-sb:hover { border-color: var(--orange); color: var(--orange); background: rgba(240,107,40,0.08); }
+    .ft-col h5 { font-family: var(--font-d); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 1.2rem; }
+    .ft-col a { display: block; font-size: 0.88rem; color: rgba(255,255,255,0.52); text-decoration: none; margin-bottom: 0.65rem; font-weight: 400; transition: color 0.2s; }
+    .ft-col a:hover { color: #fff; }
+    .ft-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .ft-copy { font-size: 0.77rem; color: rgba(255,255,255,0.28); font-weight: 300; }
+    .ft-ig { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-d); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); text-decoration: none; transition: color 0.2s; }
+    .ft-ig:hover { color: var(--orange); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-ham { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--white); justify-content: center; align-items: center; gap: 2rem; z-index: 150; }
+      .nav-links.open a { font-size: 1.5rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-r { min-height: 300px; padding: 4rem 5vw; }
+      .srv-grid { grid-template-columns: 1fr 1fr; }
+      .ab-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .pr-steps { grid-template-columns: 1fr 1fr; }
+      .cta-in { grid-template-columns: 1fr; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .srv-grid { grid-template-columns: 1fr; }
+      .pr-steps { grid-template-columns: 1fr; }
+      .ft-grid { grid-template-columns: 1fr; }
+      .hero-l { padding: 4rem 5vw 3rem; }
+      .hero-stats { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="logo-word">DRYVE<sup class="logo-reg">®</sup></span>
+      <div class="logo-bar"></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#process">Processo</a></li>
+      <li><a href="#cta" class="nav-cta">Fale Conosco</a></li>
+    </ul>
+    <div class="nav-ham" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-l">
+      <div class="eyebrow">
+        <div class="eyebrow-bar"></div>
+        <span class="eyebrow-text">Agência Fitness de Marketing</span>
+      </div>
+      <h1 class="hero-h">
+        NÃO É SÓ<br>
+        <span class="c-or">MARKETING.</span><br>
+        <span class="c-tl">É DIREÇÃO</span><span class="c-str">.</span>
+      </h1>
+      <p class="hero-p">
+        Criamos o <strong>CAMINHO</strong> para marcas que querem crescer.
+        Unindo <strong>estratégia, posicionamento</strong> e transformando
+        <strong>presença em resultado</strong>.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-or">
+          Começar agora
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#services" class="btn-tl">Ver Serviços</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="s-num">50+</div><div class="s-lbl">Clientes ativos</div></div>
+        <div><div class="s-num">3×</div><div class="s-lbl">Crescimento médio</div></div>
+        <div><div class="s-num">100%</div><div class="s-lbl">Foco em fitness</div></div>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="hero-r-pat"></div>
+      <div class="hero-r-inner">
+        <p class="hero-q">CONSTRUÍMOS<br>MARCAS QUE<br><em>CRESCEM.</em></p>
+        <p class="hero-qs">Transformamos presença em resultados reais para quem vive o universo fitness.</p>
+        <div class="hero-badge">
+          <div class="bdot"></div>
+          <span>@dryvemkt</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mq" aria-hidden="true">
+    <div class="mq-track">
+      <span class="mq-item">Estratégia <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Conexão Digital <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Autoridade <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Branding <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Expansão <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Confiança <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Intensidade <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Foco <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Escala <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Estratégia <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Conexão Digital <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Autoridade <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Branding <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Expansão <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Confiança <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Intensidade <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Foco <span class="mq-sep">◆</span></span>
+      <span class="mq-item">Escala <span class="mq-sep">◆</span></span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="srv-hd reveal">
+      <div>
+        <p class="stag">O que fazemos</p>
+        <h2 class="sh">SERVIÇOS QUE<br>GERAM RESULTADO</h2>
+      </div>
+      <p class="sp">Soluções construídas para o setor fitness. Sem fórmulas genéricas, sem desperdício.</p>
+    </div>
+    <div class="srv-grid reveal">
+      <div class="sc">
+        <div class="sc-icon or">📱</div>
+        <div class="sc-name">Social Media</div>
+        <p class="sc-desc">Gestão estratégica das redes sociais com conteúdo que engaja, converte e consolida a sua marca no universo fitness.</p>
+      </div>
+      <div class="sc teal">
+        <div class="sc-icon tl">🎯</div>
+        <div class="sc-name">Tráfego Pago</div>
+        <p class="sc-desc">Campanhas no Meta, Google e TikTok otimizadas para o público fitness. Anúncios que atraem alunos, clientes e parceiros.</p>
+      </div>
+      <div class="sc">
+        <div class="sc-icon or">🎨</div>
+        <div class="sc-name">Branding & Identidade</div>
+        <p class="sc-desc">Criação e evolução de marcas com identidade visual forte, coerente e memorável em todos os pontos de contato.</p>
+      </div>
+      <div class="sc teal">
+        <div class="sc-icon tl">🎬</div>
+        <div class="sc-name">Produção de Conteúdo</div>
+        <p class="sc-desc">Fotos, vídeos, reels e stories com a estética certa para o nicho fitness. Conteúdo que para o scroll.</p>
+      </div>
+      <div class="sc">
+        <div class="sc-icon or">📈</div>
+        <div class="sc-name">Estratégia Digital</div>
+        <p class="sc-desc">Planejamento completo de presença digital: funil, jornada do cliente e posicionamento para crescimento sustentável.</p>
+      </div>
+      <div class="sc teal">
+        <div class="sc-icon tl">⚡</div>
+        <div class="sc-name">Performance & SEO</div>
+        <p class="sc-desc">Análise de dados e otimização para que o seu negócio apareça para quem realmente importa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS BAND -->
+  <div class="kw-band">
+    <div class="kw-inner">
+      <p class="kw-lbl">O nosso universo</p>
+      <h2 class="kw-h">IDEIAS VIRAM <em>AÇÃO</em><br>MARCAS VIRAM <em>RESULTADO</em></h2>
+      <div class="kw-pills">
+        <span class="kp s">Estratégia</span>
+        <span class="kp">Autoridade</span>
+        <span class="kp s">Escala</span>
+        <span class="kp">Confiança</span>
+        <span class="kp s">Expansão</span>
+        <span class="kp">Intensidade</span>
+        <span class="kp s">Foco</span>
+        <span class="kp">Conexão Digital</span>
+        <span class="kp s">Branding</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="ab-grid">
+      <div class="reveal">
+        <p class="ab-stag">Nossa visão</p>
+        <h2 class="ab-h">
+          PREPARE-SE<br>
+          PARA LEVAR<br>
+          SEU <span class="c-or">SONHO</span><br>
+          AO <span class="c-tl">EXTRA</span><span style="-webkit-text-stroke:1.5px rgba(255,255,255,0.3);color:transparent;">ORDINÁRIO</span>
+        </h2>
+        <p class="ab-sub">Através da estratégia, dos negócios e do Digital Dryve — entregamos direção, não só marketing.</p>
+      </div>
+      <div class="ab-cards reveal d1">
+        <div class="ac">
+          <div class="ac-hd"><div class="ac-dot"></div><h4>Especialização real</h4></div>
+          <p>Nossa equipe vive o fitness. Entendemos o vocabulário, a dor de crescer uma academia e a jornada de quem constrói autoridade no nicho.</p>
+        </div>
+        <div class="ac">
+          <div class="ac-hd"><div class="ac-dot tl"></div><h4>Dados + criatividade</h4></div>
+          <p>Usamos dados para decidir, criatividade para executar. Campanhas que fazem sentido e entregam números reais para o crescimento da sua marca.</p>
+        </div>
+        <div class="ac">
+          <div class="ac-hd"><div class="ac-dot"></div><h4>Parceiros, não fornecedores</h4></div>
+          <p>Trabalhamos como extensão da sua equipe. Seu crescimento é o nosso crescimento. Cada decisão tem isso no centro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="pr-hd reveal">
+      <div>
+        <p class="stag">Como trabalhamos</p>
+        <h2 class="sh">UM PROCESSO<br>SEM RUÍDO</h2>
+      </div>
+      <p class="sp">Clareza em cada etapa. Do diagnóstico ao resultado, você sabe exatamente onde está.</p>
+    </div>
+    <div class="pr-steps reveal">
+      <div class="ps">
+        <div class="ps-top"><div class="ps-n">01</div><div class="ps-dot"></div></div>
+        <h3 class="ps-t">Diagnóstico</h3>
+        <p class="ps-d">Mapeamos sua presença atual, entendemos os objetivos e identificamos as maiores oportunidades de crescimento.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-top"><div class="ps-n">02</div><div class="ps-dot"></div></div>
+        <h3 class="ps-t">Estratégia</h3>
+        <p class="ps-d">Criamos um plano personalizado com canais, táticas, calendário e metas claras para os próximos 90 dias.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-top"><div class="ps-n">03</div><div class="ps-dot"></div></div>
+        <h3 class="ps-t">Execução</h3>
+        <p class="ps-d">Implementamos com velocidade e precisão. Conteúdo, campanhas e automações ativas na data combinada.</p>
+      </div>
+      <div class="ps">
+        <div class="ps-top"><div class="ps-n">04</div><div class="ps-dot"></div></div>
+        <h3 class="ps-t">Otimização</h3>
+        <p class="ps-d">Monitoramos resultados em tempo real e ajustamos continuamente. O que funciona escala, o que não funciona muda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="bg-p"></div>
+    <div class="cta-in">
+      <div>
+        <p class="cta-ey">Vamos crescer juntos</p>
+        <h2 class="cta-h">DIGITAL<br><em>DRYVE</em><br>AGUARDA<br>VOCÊ.</h2>
+        <p class="cta-sub">Fale com a nossa equipe e descubra como levar o seu negócio fitness ao próximo nível com estratégia e propósito.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+        <a href="https://www.instagram.com/dryvemkt/" target="_blank" rel="noopener" class="btn-wh">
+          Falar com a Dryve
+          <svg class="arr" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.instagram.com/dryvemkt/" target="_blank" rel="noopener" class="cta-ig">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          @dryvemkt
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-grid">
+      <div>
+        <a href="#" class="ft-logo">DRYVE<sup style="font-size:0.55rem;vertical-align:super;">®</sup></a>
+        <p class="ft-tag">Não é só marketing.<br>É direção.</p>
+        <div class="ft-soc">
+          <a href="https://www.instagram.com/dryvemkt/" target="_blank" rel="noopener" class="ft-sb" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h5>Serviços</h5>
+        <a href="#services">Social Media</a>
+        <a href="#services">Tráfego Pago</a>
+        <a href="#services">Branding</a>
+        <a href="#services">Conteúdo</a>
+        <a href="#services">Performance</a>
+      </div>
+      <div class="ft-col">
+        <h5>Empresa</h5>
+        <a href="#about">Sobre</a>
+        <a href="#process">Processo</a>
+        <a href="#cta">Contato</a>
+      </div>
+      <div class="ft-col">
+        <h5>Contato</h5>
+        <a href="https://www.instagram.com/dryvemkt/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#cta">Solicitar proposta</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-copy">© 2025 Dryve®. Todos os direitos reservados.</p>
+      <a href="https://www.instagram.com/dryvemkt/" target="_blank" rel="noopener" class="ft-ig">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        @dryvemkt
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const ham = document.getElementById('hamburger');
+    const nl = document.getElementById('navLinks');
+    ham.addEventListener('click', () => {
+      nl.classList.toggle('open');
+      const s = ham.querySelectorAll('span');
+      if (nl.classList.contains('open')) {
+        s[0].style.transform='rotate(45deg) translate(5px,5px)';
+        s[1].style.opacity='0';
+        s[2].style.transform='rotate(-45deg) translate(5px,-5px)';
+      } else {
+        s.forEach(x=>{x.style.transform='';x.style.opacity='';});
+      }
+    });
+    nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      nl.classList.remove('open');
+      ham.querySelectorAll('span').forEach(x=>{x.style.transform='';x.style.opacity='';});
+    }));
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+    },{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
