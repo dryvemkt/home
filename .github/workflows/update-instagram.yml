@@ -1,0 +1,168 @@
+name: Atualizar Métricas do Instagram
+
+# ════════════════════════════════════════════════════════════
+#  Roda automaticamente todo dia às 6h (horário de Brasília)
+#  e pode ser rodado manualmente na aba Actions do GitHub
+# ════════════════════════════════════════════════════════════
+on:
+  schedule:
+    - cron: '0 9 * * *'   # 9h UTC = 6h Brasília (ajuste se necessário)
+  workflow_dispatch:       # Permite rodar manualmente
+
+jobs:
+  fetch-instagram-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Buscar dados do Instagram
+        env:
+          # ────────────────────────────────────────────────────────
+          # ⚠️  IMPORTANTE: configure este secret no GitHub
+          #     Settings → Secrets → Actions → New repository secret
+          #     Nome: INSTAGRAM_TOKEN
+          #     Valor: o token de acesso do influencer (leia o guia abaixo)
+          # ────────────────────────────────────────────────────────
+          INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+        run: |
+          echo "🔍 Buscando dados do Instagram..."
+
+          # ── Conta do usuário (seguidores) ──────────────────────
+          USER_DATA=$(curl -s "https://graph.instagram.com/me?fields=id,username,followers_count,media_count&access_token=${INSTAGRAM_TOKEN}")
+          echo "Resposta da API (user): $USER_DATA"
+
+          FOLLOWERS=$(echo $USER_DATA | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('followers_count', 0))")
+          MEDIA_COUNT=$(echo $USER_DATA | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('media_count', 0))")
+
+          # ── Insights da conta (alcance e impressões) ────────────
+          INSIGHTS=$(curl -s "https://graph.instagram.com/me/insights?metric=reach,impressions&period=days_28&access_token=${INSTAGRAM_TOKEN}")
+          echo "Resposta da API (insights): $INSIGHTS"
+
+          # ── Últimos posts ───────────────────────────────────────
+          MEDIA=$(curl -s "https://graph.instagram.com/me/media?fields=id,like_count,comments_count,reach,impressions,timestamp,media_type&limit=30&access_token=${INSTAGRAM_TOKEN}")
+          echo "Resposta da API (media): $MEDIA"
+
+          # ── Dados de audiência (gênero e cidades) ───────────────
+          AUDIENCE=$(curl -s "https://graph.instagram.com/me/insights?metric=audience_gender_age,audience_city&period=lifetime&access_token=${INSTAGRAM_TOKEN}")
+          echo "Resposta da API (audience): $AUDIENCE"
+
+          # ── Processar e montar JSON final ────────────────────────
+          python3 << 'PYTHON'
+          import json, os, sys
+          from datetime import datetime
+
+          token = os.environ['INSTAGRAM_TOKEN']
+          import urllib.request
+
+          def fetch(url):
+              try:
+                  with urllib.request.urlopen(url) as r:
+                      return json.loads(r.read())
+              except Exception as e:
+                  print(f"Erro ao buscar {url}: {e}")
+                  return {}
+
+          base = "https://graph.instagram.com"
+
+          # Dados básicos do usuário
+          user = fetch(f"{base}/me?fields=id,username,followers_count,media_count&access_token={token}")
+          followers = user.get('followers_count', 0)
+          media_count = user.get('media_count', 0)
+
+          # Insights gerais (últimos 28 dias)
+          insights_url = f"{base}/me/insights?metric=reach,impressions,accounts_engaged&period=days_28&access_token={token}"
+          insights = fetch(insights_url)
+          reach_total = 0
+          impressions_total = 0
+          engaged = 0
+          if 'data' in insights:
+              for m in insights['data']:
+                  val = m.get('values', [{}])[-1].get('value', 0)
+                  if m['name'] == 'reach': reach_total = val
+                  if m['name'] == 'impressions': impressions_total = val
+                  if m['name'] == 'accounts_engaged': engaged = val
+
+          # Últimos posts
+          media = fetch(f"{base}/me/media?fields=id,like_count,comments_count,reach,impressions,timestamp,media_type&limit=30&access_token={token}")
+          posts = media.get('data', [])
+          
+          total_eng = 0
+          top_posts = []
+          posts_this_month = 0
+          now = datetime.utcnow()
+          
+          for p in posts:
+              likes = p.get('like_count', 0) or 0
+              comments = p.get('comments_count', 0) or 0
+              r = p.get('reach', 0) or 0
+              total_eng += likes + comments
+              top_posts.append({'reach': r, 'likes': likes, 'comments': comments, 'type': p.get('media_type','')})
+              # conta posts deste mês
+              ts = p.get('timestamp','')
+              if ts:
+                  try:
+                      post_dt = datetime.fromisoformat(ts.replace('Z','+00:00'))
+                      if post_dt.year == now.year and post_dt.month == now.month:
+                          posts_this_month += 1
+                  except: pass
+
+          top_posts = sorted(top_posts, key=lambda x: x['reach'], reverse=True)[:3]
+          engagement_rate = round((total_eng / followers * 100), 2) if followers > 0 else 0
+          avg_reach = round(reach_total / len(posts)) if posts else 0
+
+          # Audiência
+          aud = fetch(f"{base}/me/insights?metric=audience_gender_age,audience_city&period=lifetime&access_token={token}")
+          female_pct = 0
+          male_pct = 0
+          top_cities = []
+          if 'data' in aud:
+              for m in aud['data']:
+                  if m['name'] == 'audience_gender_age':
+                      vals = m.get('values', [{}])[-1].get('value', {})
+                      f_total = sum(v for k, v in vals.items() if k.startswith('F.'))
+                      m_total = sum(v for k, v in vals.items() if k.startswith('M.'))
+                      total_g = f_total + m_total
+                      if total_g > 0:
+                          female_pct = round(f_total / total_g * 100, 1)
+                          male_pct = round(m_total / total_g * 100, 1)
+                  if m['name'] == 'audience_city':
+                      vals = m.get('values', [{}])[-1].get('value', {})
+                      city_total = sum(vals.values())
+                      cities = sorted(vals.items(), key=lambda x: x[1], reverse=True)[:5]
+                      top_cities = [{'name': c[0], 'pct': round(c[1]/city_total*100,1)} for c in cities if city_total > 0]
+
+          # Montar JSON final
+          output = {
+              "updated_at": datetime.utcnow().isoformat() + "Z",
+              "followers": followers,
+              "engagement": engagement_rate,
+              "reach": avg_reach,
+              "impressions": impressions_total,
+              "posts_per_month": posts_this_month,
+              "audience_gender": {"female": female_pct, "male": male_pct},
+              "top_cities": top_cities,
+              "top_posts": top_posts,
+              "trends": {
+                  "followers": 0,
+                  "engagement": 0,
+                  "reach": 0,
+                  "impressions": 0
+              }
+          }
+
+          with open('instagram-data.json', 'w', encoding='utf-8') as f:
+              json.dump(output, f, ensure_ascii=False, indent=2)
+
+          print("✅ instagram-data.json gerado com sucesso!")
+          print(json.dumps(output, indent=2, ensure_ascii=False))
+          PYTHON
+
+      - name: Commit do arquivo atualizado
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add instagram-data.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Atualiza métricas do Instagram - $(date +'%d/%m/%Y %H:%M')"
+          git push
