@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Influenciadores — DRYVE®</title>
+  <meta name="description" content="Conheça os influencers do universo fitness parceiros da DRYVE®." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║       🔧  BLOCO DE CONFIGURAÇÕES — EDITE SOMENTE AQUI           ║
+   ║  Adicione, remova ou edite influenciadores neste bloco.         ║
+   ║  O site inteiro se atualiza automaticamente.                    ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+const INFLUENCERS = [
+
+  /* ── Como adicionar um novo influenciador:
+     1. Copie um bloco { } abaixo
+     2. Preencha os campos
+     3. Salve o arquivo — o card aparece na página
+
+     foto:      Caminho da imagem no repositório. Ex: "fotos/joao.jpg"
+                Deixe "" para exibir avatar com inicial do nome.
+     nicho:     Usado nos filtros — use sempre o mesmo texto para o mesmo nicho.
+     mediakit:  Nome do arquivo HTML do media kit. Ex: "mediakit-joao.html"
+                Deixe "" para o botão ficar desabilitado.
+  ── */
+
+  {
+    nome:        "Ana Lima",
+    foto:        "",                      // Ex: "fotos/ana.jpg"
+    idade:       24,
+    cidade:      "São Paulo, SP",
+    instagram:   "@analima.fit",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Musculação",
+    seguidores:  "128K",
+    engajamento: "5.2%",
+    mediakit:    "",                      // Ex: "mediakit-ana.html"
+    destaque:    true,                    // true = badge "Em destaque"
+  },
+  {
+    nome:        "Carlos Rocha",
+    foto:        "",
+    idade:       29,
+    cidade:      "Rio de Janeiro, RJ",
+    instagram:   "@carlosrocha",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Nutrição",
+    seguidores:  "84K",
+    engajamento: "6.8%",
+    mediakit:    "",
+    destaque:    false,
+  },
+  {
+    nome:        "Bianca Torres",
+    foto:        "",
+    idade:       26,
+    cidade:      "Curitiba, PR",
+    instagram:   "@biancafit",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Lifestyle",
+    seguidores:  "210K",
+    engajamento: "4.1%",
+    mediakit:    "",
+    destaque:    true,
+  },
+  {
+    nome:        "Marcos Viana",
+    foto:        "",
+    idade:       31,
+    cidade:      "Belo Horizonte, MG",
+    instagram:   "@marcosviana",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Musculação",
+    seguidores:  "56K",
+    engajamento: "7.3%",
+    mediakit:    "",
+    destaque:    false,
+  },
+  {
+    nome:        "Letícia Souza",
+    foto:        "",
+    idade:       22,
+    cidade:      "Salvador, BA",
+    instagram:   "@letfitness",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Yoga & Bem-estar",
+    seguidores:  "93K",
+    engajamento: "5.9%",
+    mediakit:    "",
+    destaque:    false,
+  },
+  {
+    nome:        "Rafael Neto",
+    foto:        "",
+    idade:       27,
+    cidade:      "Florianópolis, SC",
+    instagram:   "@rafaelneto",
+    ig_url:      "https://instagram.com/",
+    nicho:       "Nutrição",
+    seguidores:  "145K",
+    engajamento: "4.7%",
+    mediakit:    "",
+    destaque:    true,
+  },
+  // ➕ ADICIONE MAIS INFLUENCIADORES AQUI
+];
+
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║       FIM DO BLOCO DE CONFIGURAÇÕES — não edite abaixo          ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange:      #F06B28;
+    --orange-dark: #C9521A;
+    --orange-light:#FFF0E8;
+    --teal:        #00B4AE;
+    --teal-dark:   #008C87;
+    --teal-light:  #E0F7F6;
+    --black:       #111111;
+    --gray:        #6B6B6B;
+    --light:       #F5F4F2;
+    --white:       #FFFFFF;
+    --border:      rgba(17,17,17,0.1);
+    --font-d: 'Barlow Condensed', sans-serif;
+    --font-b: 'Barlow', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--black); font-family: var(--font-b); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  ::selection { background: var(--orange); color: #fff; }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 5vw; background: rgba(255,255,255,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
+  nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+  .nav-logo { display: flex; align-items: center; gap: .4rem; text-decoration: none; }
+  .logo-word { font-family: var(--font-d); font-size: 2rem; font-weight: 900; letter-spacing: .04em; color: var(--teal); line-height: 1; }
+  .logo-bar  { width: 3px; height: 26px; background: var(--orange); border-radius: 2px; margin-left: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: var(--font-d); font-size: 1rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links .active { color: var(--orange); }
+  .nav-cta { background: var(--orange) !important; color: #fff !important; padding: .55rem 1.4rem; border-radius: 3px; }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+  .nav-ham { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-ham span { display: block; width: 26px; height: 2px; background: var(--black); border-radius: 2px; transition: .3s; }
+
+  /* ── HERO ── */
+  #hero {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 5vw 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-pat { position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 18px); }
+  .hero-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,var(--orange),var(--teal)); }
+  /* diagonal color slice */
+  .hero-slice { position: absolute; right: 0; bottom: 0; top: 0; width: 32vw; background: var(--orange); clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%); opacity: .9; }
+  .hero-slice-pat { position: absolute; right: 0; bottom: 0; top: 0; width: 32vw; background-image: repeating-linear-gradient(-45deg,rgba(0,0,0,.05) 0,rgba(0,0,0,.05) 1px,transparent 1px,transparent 18px); clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%); }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-eyebrow { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.4rem; opacity: 0; animation: fu .6s ease .1s forwards; }
+  .eyebrow-bar { width: 30px; height: 2px; background: var(--teal); }
+  .eyebrow-txt { font-family: var(--font-d); font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); }
+  .hero-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(3.2rem, 6vw, 6.5rem); line-height: .88; text-transform: uppercase; color: #fff; margin-bottom: 1.2rem; opacity: 0; animation: fu .7s ease .2s forwards; }
+  .hero-h .c-or { color: var(--orange); }
+  .hero-h .c-tl { color: var(--teal); }
+
+
+  @keyframes fu { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fi { from{opacity:0} to{opacity:1} }
+
+  /* ── MARQUEE ── */
+  .mq { background: var(--teal); padding: 1rem 0; overflow: hidden; }
+  .mq-track { display: flex; gap: 2.5rem; animation: mq 28s linear infinite; width: max-content; }
+  .mq:hover .mq-track { animation-play-state: paused; }
+  .mq-item { display: flex; align-items: center; gap: .6rem; white-space: nowrap; font-family: var(--font-d); font-size: .9rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #fff; }
+  .mq-sep { color: rgba(255,255,255,.3); }
+  @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── FILTER BAR ── */
+  #filter-bar { background: var(--light); padding: 2.2rem 5vw; border-bottom: 1px solid var(--border); position: sticky; top: 68px; z-index: 100; }
+  .filter-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .filter-label { font-family: var(--font-d); font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); margin-right: .5rem; white-space: nowrap; }
+  .filter-pills { display: flex; gap: .5rem; flex-wrap: wrap; flex: 1; }
+  .fp { font-family: var(--font-d); font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: .45rem 1.1rem; border-radius: 30px; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); cursor: pointer; transition: background .18s, color .18s, border-color .18s; white-space: nowrap; }
+  .fp:hover { border-color: var(--orange); color: var(--orange); }
+  .fp.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+  .fp.active-teal { background: var(--teal); color: #fff; border-color: var(--teal); }
+  /* search */
+  .filter-search { display: flex; align-items: center; gap: .5rem; background: var(--white); border: 1.5px solid var(--border); border-radius: 30px; padding: .45rem 1rem; transition: border-color .2s; }
+  .filter-search:focus-within { border-color: var(--orange); }
+  .filter-search input { border: none; outline: none; font-family: var(--font-b); font-size: .88rem; color: var(--black); background: transparent; width: 180px; }
+  .filter-search input::placeholder { color: rgba(107,107,107,.5); }
+  /* sort */
+  .filter-sort { display: flex; align-items: center; gap: .5rem; }
+  .sort-btn { font-family: var(--font-d); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .45rem 1rem; border-radius: 30px; border: 1.5px solid var(--border); background: var(--white); color: var(--gray); cursor: pointer; transition: background .18s, color .18s, border-color .18s; display: flex; align-items: center; gap: .35rem; }
+  .sort-btn.active { border-color: var(--teal); color: var(--teal); }
+  /* results count */
+  .filter-count { font-family: var(--font-d); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-left: auto; white-space: nowrap; }
+  .filter-count span { color: var(--orange); }
+
+  /* ── GRID ── */
+  #grid-section { padding: 3.5rem 5vw 6rem; background: var(--white); }
+  .inf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  /* ── CARD ── */
+  .inf-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .inf-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--orange);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s;
+  }
+  .inf-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.09); border-color: rgba(240,107,40,.25); }
+  .inf-card:hover::before { transform: scaleX(1); }
+  .inf-card.teal-card::before { background: var(--teal); }
+  .inf-card.teal-card:hover { border-color: rgba(0,180,174,.25); }
+
+  /* photo strip */
+  .card-photo-strip {
+    height: 220px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .card-photo-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .inf-card:hover .card-photo-strip img { transform: scale(1.04); }
+  .card-avatar-ph {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+  }
+  .card-initial {
+    font-family: var(--font-d); font-size: 5rem; font-weight: 900;
+    color: rgba(255,255,255,.08); line-height: 1; user-select: none;
+  }
+  .card-initial-ring {
+    position: absolute; width: 80px; height: 80px; border-radius: 50%;
+    border: 2px solid var(--orange); display: flex; align-items: center; justify-content: center;
+  }
+  .card-initial-ring span { font-family: var(--font-d); font-size: 2rem; font-weight: 900; color: #fff; }
+  /* badge destaque */
+  .card-badge-dest {
+    position: absolute; top: .8rem; left: .8rem;
+    background: var(--orange); color: #fff;
+    font-family: var(--font-d); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    padding: .22rem .65rem; border-radius: 3px; display: flex; align-items: center; gap: .3rem;
+  }
+  /* nicho badge */
+  .card-nicho {
+    position: absolute; bottom: .8rem; right: .8rem;
+    font-family: var(--font-d); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    padding: .25rem .7rem; border-radius: 3px;
+    background: rgba(0,0,0,.65); backdrop-filter: blur(6px); color: #fff;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+
+  /* card body */
+  .card-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+  .card-name { font-family: var(--font-d); font-size: 1.4rem; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; line-height: 1; }
+  .card-age  { font-family: var(--font-d); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-top: .25rem; }
+
+  .card-ig { display: inline-flex; align-items: center; gap: .35rem; font-family: var(--font-d); font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--teal); text-decoration: none; transition: color .2s; }
+  .card-ig:hover { color: var(--orange); }
+
+  .card-location { display: flex; align-items: center; gap: .35rem; font-size: .83rem; color: var(--gray); }
+
+  /* metrics row */
+  .card-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .card-metric { background: var(--light); border-radius: 5px; padding: .8rem 1rem; }
+  .cm-val { font-family: var(--font-d); font-size: 1.3rem; font-weight: 900; line-height: 1; color: var(--orange); }
+  .inf-card.teal-card .cm-val { color: var(--teal); }
+  .cm-lbl { font-family: var(--font-d); font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gray); margin-top: .2rem; }
+
+  /* actions */
+  .card-actions { display: flex; gap: .6rem; margin-top: auto; }
+  .btn-ig { display: inline-flex; align-items: center; gap: .4rem; background: transparent; border: 1.5px solid var(--border); color: var(--black); padding: .65rem 1rem; font-family: var(--font-d); font-size: .82rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: border-color .2s, color .2s; white-space: nowrap; flex-shrink: 0; }
+  .btn-ig:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-kit { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; background: var(--orange); color: #fff; padding: .65rem 1.2rem; font-family: var(--font-d); font-size: .82rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: background .2s, transform .15s, box-shadow .2s; flex: 1; }
+  .btn-kit:hover { background: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(240,107,40,.35); }
+  .btn-kit:hover .arr { transform: translateX(3px); }
+  .arr { transition: transform .2s; }
+  .btn-kit.disabled { background: var(--light); color: var(--gray); pointer-events: none; }
+
+  /* ── EMPTY STATE ── */
+  #empty-state { display: none; text-align: center; padding: 5rem 2rem; }
+  #empty-state.show { display: block; }
+  .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: .3; }
+  .empty-txt { font-family: var(--font-d); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; color: var(--gray); margin-bottom: .5rem; }
+  .empty-sub { font-size: .9rem; color: rgba(107,107,107,.6); }
+
+  /* ── CTA ── */
+  #cta { background: var(--orange); position: relative; overflow: hidden; padding: 6rem 5vw; }
+  #cta .bg-p { position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg,rgba(0,0,0,.04) 0,rgba(0,0,0,.04) 1px,transparent 1px,transparent 18px); }
+  .cta-in { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
+  .cta-ey { font-family: var(--font-d); font-size: .78rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+  .cta-ey::before { content: ''; width: 20px; height: 2px; background: rgba(255,255,255,.45); }
+  .cta-h { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.8rem,5vw,5.5rem); line-height: .9; text-transform: uppercase; color: #fff; margin-bottom: 1.2rem; }
+  .cta-h em { font-style: normal; color: var(--black); }
+  .cta-sub { font-size: 1rem; color: rgba(255,255,255,.72); max-width: 380px; line-height: 1.65; }
+  .btn-wh { display: inline-flex; align-items: center; gap: .6rem; background: #fff; color: var(--orange); padding: 1.1rem 2.2rem; font-family: var(--font-d); font-size: 1.1rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; border-radius: 3px; white-space: nowrap; transition: background .2s, color .2s, transform .15s, box-shadow .2s; }
+  .btn-wh:hover { background: var(--black); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); color: #fff; padding: 3rem 5vw 2rem; }
+  .ft-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.06); padding-top: 2rem; }
+  .ft-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 900; letter-spacing: .04em; color: var(--teal); text-decoration: none; }
+  .ft-copy { font-size: .77rem; color: rgba(255,255,255,.28); font-weight: 300; }
+  .ft-ig   { display: flex; align-items: center; gap: .4rem; font-family: var(--font-d); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); text-decoration: none; transition: color .2s; }
+  .ft-ig:hover { color: var(--orange); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-ham   { display: flex; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--white); justify-content: center; align-items: center; gap: 2rem; z-index: 150; }
+    .nav-links.open a { font-size: 1.5rem; }
+    .inf-grid  { grid-template-columns: repeat(2, 1fr); }
+    .filter-inner { gap: .75rem; }
+    .cta-in { grid-template-columns: 1fr; }
+    .hero-slice, .hero-slice-pat { display: none; }
+  }
+  @media (max-width: 600px) {
+    .inf-grid  { grid-template-columns: 1fr; }
+    .filter-search input { width: 130px; }
+    .filter-count { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <span class="logo-word">DRYVE<sup style="font-size:.6rem;vertical-align:super">®</sup></span>
+    <div class="logo-bar"></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#services">Serviços</a></li>
+    <li><a href="index.html#about">Sobre</a></li>
+    <li><a href="influenciadores.html" class="active">Influencers</a></li>
+    <li><a href="index.html#cta" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <div class="nav-ham" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pat"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-slice"></div>
+  <div class="hero-slice-pat"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-bar"></div>
+      <span class="eyebrow-txt">Rede de Talentos · DRYVE®</span>
+    </div>
+    <h1 class="hero-h">
+      NOSSOS<br>
+      <span class="c-or">INFLUENCERS</span><br>
+      <span class="c-tl">FITNESS</span>
+    </h1>
+
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track" id="mq-track"></div>
+</div>
+
+<!-- FILTER BAR -->
+<div id="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Filtrar:</span>
+
+    <div class="filter-pills" id="filter-pills">
+      <!-- preenchido pelo JS -->
+    </div>
+
+    <div class="filter-search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(107,107,107,0.6)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar por nome..." autocomplete="off" />
+    </div>
+
+    <div class="filter-sort">
+      <button class="sort-btn active" data-sort="default" id="sort-default">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Padrão
+      </button>
+      <button class="sort-btn" data-sort="seguidores" id="sort-seg">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Seguidores
+      </button>
+      <button class="sort-btn" data-sort="engajamento" id="sort-eng">
+        🔥 Engajamento
+      </button>
+    </div>
+
+    <div class="filter-count" id="filter-count">
+      Mostrando <span id="count-num">0</span> influencers
+    </div>
+  </div>
+</div>
+
+<!-- GRID -->
+<section id="grid-section">
+  <div class="inf-grid" id="inf-grid"></div>
+  <div id="empty-state">
+    <div class="empty-icon">🔍</div>
+    <div class="empty-txt">Nenhum resultado</div>
+    <p class="empty-sub">Tente outro filtro ou termo de busca.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="bg-p"></div>
+  <div class="cta-in">
+    <div>
+      <p class="cta-ey">Parceria com a DRYVE®</p>
+      <h2 class="cta-h">SEU NEGÓCIO<br>COM O <em>INFLUENCER</em><br>CERTO.</h2>
+      <p class="cta-sub">Encontramos o creator ideal para a sua marca no universo fitness. Estratégia, alinhamento e resultado.</p>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/dryvemkt/" target="_blank" class="btn-wh">
+        Falar com a Dryve®
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-bot">
+    <a href="index.html" class="ft-logo">DRYVE<sup style="font-size:.45rem;vertical-align:super">®</sup></a>
+    <p class="ft-copy">© 2025 Dryve®. Todos os direitos reservados.</p>
+    <a href="https://www.instagram.com/dryvemkt/" target="_blank" class="ft-ig">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      @dryvemkt
+    </a>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   ENGINE — lê INFLUENCERS e constrói toda a página
+═══════════════════════════════════════════════════════════ */
+(function () {
+
+  const $ = id => document.getElementById(id);
+
+  /* SVG helpers */
+  const IG_SVG  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>`;
+  const PIN_SVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>`;
+  const ARR_SVG = `<svg class="arr" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const DOT_SVG = `<svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#F06B28"/></svg>`;
+
+  /* ── parse seguidores para ordenar (ex: "128K" → 128000) ── */
+  function parseNum(str) {
+    if (!str || str === '—') return 0;
+    const s = str.toString().replace(',','.');
+    if (s.includes('M')) return parseFloat(s) * 1000000;
+    if (s.includes('K')) return parseFloat(s) * 1000;
+    return parseFloat(s) || 0;
+  }
+
+  /* ── estado ── */
+  let activeNicho = 'Todos';
+  let activeSort  = 'default';
+  let searchTerm  = '';
+
+  /* ── nichos únicos ── */
+  const nichos = ['Todos', ...new Set(INFLUENCERS.map(i => i.nicho))];
+
+
+
+  /* ── MARQUEE ── */
+  const mqWords = INFLUENCERS.map(i => i.nome).concat(nichos.slice(1)).concat(['Fitness','Lifestyle','Resultado','Estratégia','Conteúdo','Parceria']);
+  const mq2 = mqWords.concat(mqWords).map(w => `<span class="mq-item">${w} <span class="mq-sep">◆</span></span>`).join('');
+  $('mq-track').innerHTML = mq2;
+
+  /* ── FILTER PILLS ── */
+  function renderPills() {
+    $('filter-pills').innerHTML = nichos.map((n, idx) => {
+      const isActive = n === activeNicho;
+      const cls = isActive ? (idx === 0 ? 'fp active' : 'fp active-teal') : 'fp';
+      return `<button class="${cls}" data-nicho="${n}">${n}</button>`;
+    }).join('');
+    // bind
+    $('filter-pills').querySelectorAll('.fp').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeNicho = btn.dataset.nicho;
+        renderPills();
+        renderGrid();
+      });
+    });
+  }
+
+  /* ── SORT BUTTONS ── */
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeSort = btn.dataset.sort;
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid();
+    });
+  });
+
+  /* ── SEARCH ── */
+  $('search-input').addEventListener('input', e => {
+    searchTerm = e.target.value.toLowerCase().trim();
+    renderGrid();
+  });
+
+  /* ── BUILD CARD ── */
+  function buildCard(inf, idx) {
+    const isTeal = idx % 2 === 1;
+    const initial = inf.nome.charAt(0).toUpperCase();
+
+    const photoHTML = inf.foto
+      ? `<img src="${inf.foto}" alt="${inf.nome}" loading="lazy" />`
+      : `<div class="card-avatar-ph">
+           <div class="card-initial">${initial}${initial}</div>
+           <div class="card-initial-ring"><span>${initial}</span></div>
+         </div>`;
+
+    const destBadge = inf.destaque
+      ? `<div class="card-badge-dest">${DOT_SVG} Em destaque</div>`
+      : '';
+
+    const kitBtn = inf.mediakit
+      ? `<a href="${inf.mediakit}" class="btn-kit">Ver Media Kit ${ARR_SVG}</a>`
+      : `<span class="btn-kit disabled">Media Kit em breve</span>`;
+
+    return `
+      <div class="inf-card ${isTeal ? 'teal-card' : ''}" data-nicho="${inf.nicho}" data-nome="${inf.nome.toLowerCase()}">
+        <div class="card-photo-strip">
+          ${photoHTML}
+          ${destBadge}
+          <div class="card-nicho">${inf.nicho}</div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-head">
+              <div>
+                <div class="card-name">${inf.nome}</div>
+                <div class="card-age">${inf.idade} anos</div>
+              </div>
+            </div>
+            <a href="${inf.ig_url}" target="_blank" class="card-ig">
+              ${IG_SVG} ${inf.instagram}
+            </a>
+          </div>
+          <div class="card-location">${PIN_SVG} ${inf.cidade}</div>
+          <div class="card-metrics">
+            <div class="card-metric">
+              <div class="cm-val">${inf.seguidores}</div>
+              <div class="cm-lbl">Seguidores</div>
+            </div>
+            <div class="card-metric">
+              <div class="cm-val">${inf.engajamento}</div>
+              <div class="cm-lbl">Engajamento</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="${inf.ig_url}" target="_blank" class="btn-ig">${IG_SVG} Instagram</a>
+            ${kitBtn}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  /* ── RENDER GRID ── */
+  function renderGrid() {
+    let list = [...INFLUENCERS];
+
+    // filtro nicho
+    if (activeNicho !== 'Todos') {
+      list = list.filter(i => i.nicho === activeNicho);
+    }
+
+    // filtro busca
+    if (searchTerm) {
+      list = list.filter(i =>
+        i.nome.toLowerCase().includes(searchTerm) ||
+        i.instagram.toLowerCase().includes(searchTerm) ||
+        i.nicho.toLowerCase().includes(searchTerm) ||
+        i.cidade.toLowerCase().includes(searchTerm)
+      );
+    }
+
+    // ordenação
+    if (activeSort === 'seguidores') {
+      list.sort((a, b) => parseNum(b.seguidores) - parseNum(a.seguidores));
+    } else if (activeSort === 'engajamento') {
+      list.sort((a, b) => parseNum(b.engajamento) - parseNum(a.engajamento));
+    }
+
+    // render
+    const grid = $('inf-grid');
+    const empty = $('empty-state');
+
+    if (list.length === 0) {
+      grid.innerHTML = '';
+      empty.classList.add('show');
+    } else {
+      empty.classList.remove('show');
+      grid.innerHTML = list.map((inf, idx) => buildCard(inf, idx)).join('');
+      // animate cards in
+      grid.querySelectorAll('.inf-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            card.style.transition = 'opacity .4s ease, transform .4s ease, box-shadow .25s, border-color .25s';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, i * 60);
+        });
+      });
+    }
+
+    // count
+    $('count-num').textContent = list.length;
+  }
+
+  /* ── NAV ── */
+  window.addEventListener('scroll', () =>
+    $('navbar').classList.toggle('scrolled', scrollY > 40));
+  const ham = $('hamburger');
+  const nl  = $('navLinks');
+  ham.addEventListener('click', () => {
+    nl.classList.toggle('open');
+    const s = ham.querySelectorAll('span');
+    if (nl.classList.contains('open')) {
+      s[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+      s[1].style.opacity   = '0';
+      s[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+    } else {
+      s.forEach(x => { x.style.transform=''; x.style.opacity=''; });
+    }
+  });
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nl.classList.remove('open');
+    ham.querySelectorAll('span').forEach(x => { x.style.transform=''; x.style.opacity=''; });
+  }));
+
+  /* ── REVEAL ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* ── INIT ── */
+  renderPills();
+  renderGrid();
+
+})();
+</script>
+</body>
+</html>
