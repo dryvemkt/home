@@ -3,321 +3,561 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top Run | Links</title>
+  <title id="page-title">Links</title>
+  <meta name="description" id="page-desc" content="Links" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --c1:      #5b5b5b;
-      --c1-dark: #B52720;
-      --dark:    #111111;
-      --gray:    #9e9d9d;
-      --white:   #FFFFFF;
-      --border:  rgba(17,17,17,0.1);
-      --font-d:  'Barlow Condensed', sans-serif;
-      --font-b:  'Barlow', sans-serif;
-    }
-    body {
-      background: var(--white);
-      color: var(--dark);
-      font-family: var(--font-b);
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1rem;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--c1);
-      z-index: 10;
-    }
-
-    .lt-wrap {
-      width: 100%;
-      max-width: 520px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .lt-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--c1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-d);
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 0.04em;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .lt-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-    .lt-name {
-      font-family: var(--font-d);
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1;
-    }
-
-    .lt-tagline {
-      font-family: var(--font-d);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-align: center;
-    }
-
-    .lt-divider {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: var(--font-d);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
-    .lt-divider::before,
-    .lt-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .lt-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      width: 100%;
-      padding: 0.85rem 1.4rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-family: var(--font-d);
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 2px solid var(--border);
-      background: var(--white);
-      color: var(--dark);
-      transition: transform 0.18s, box-shadow 0.22s, background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .lt-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.09);
-      border-color: var(--c1);
-      color: var(--c1);
-    }
-    .lt-btn.lt-c1 { background: var(--c1); color: #fff; border-color: var(--c1); }
-    .lt-btn.lt-c1:hover { background: var(--c1-dark); border-color: var(--c1-dark); box-shadow: 0 8px 28px rgba(230,51,41,0.35); color: #fff; }
-    .lt-btn.lt-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
-    .lt-btn.lt-dark:hover { background: #222; box-shadow: 0 8px 28px rgba(0,0,0,0.3); color: #fff; }
-
-    .lt-media-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.07);
-      font-size: 1rem;
-    }
-    .lt-btn.lt-c1 .lt-media-icon,
-    .lt-btn.lt-dark .lt-media-icon { background: rgba(255,255,255,0.15); }
-
-    .lt-label { flex: 1; }
-    .lt-arrow { opacity: 0.45; flex-shrink: 0; font-size: 0.9rem; }
-    .lt-btn:hover .lt-arrow { opacity: 1; }
-
-    .lt-footer {
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--gray);
-      text-align: center;
-    }
-    .lt-footer a { color: var(--c1); text-decoration: none; font-weight: 600; }
-    .lt-footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 600px) {
-      .lt-btn { padding: 0.75rem 1.1rem; }
-    }
-
-    @keyframes fu { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    .anim { opacity: 0; animation: fu 0.5s ease forwards; }
-  </style>
-</head>
-<body>
-
-<div class="lt-wrap" id="app"></div>
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+ 
 <script>
-/* ============================================================
-   SEÇÃO DE CONFIGURAÇÃO — edite aqui
-   ============================================================ */
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║         🔧  BLOCO DE CONFIGURAÇÕES — EDITE SOMENTE AQUI         ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+ 
 const CONFIG = {
-
-  /* --- Identidade --- */
-  nome:     "Top Run 013",
-  tagline:  "Cupons e novidades oficiais",
-  logo:     "media/logo-toprun.png",          // URL de imagem (deixe "" para usar as iniciais)
-  iniciais: "TR",
-
-  /* --- Label do separador de seção --- */
-  divider: "Links",
-
-  /* --- Links ---
-     style: "default" | "primary" | "dark"
-     icon:  emoji ou texto curto (ex: "🏃" "📱")
-            deixe "" para não exibir ícone
-  */
+ 
+  /* ── IDENTIDADE ─────────────────────────────────────────────────── */
+  nome:      "Top Run 013",
+  slogan:    "Cupons e novidades oficiais",
+  bio:       "",
+ 
+  /* ── FOTO / LOGO ────────────────────────────────────────────────── */
+  // Coloque a imagem na pasta do repositório e ajuste o caminho abaixo.
+  // Deixe "" para exibir as iniciais em texto.
+  foto:      "logo-toprun.png",    // Ex: "fotos/logo-toprun.png"
+ 
+  /* ── CAPA (banner atrás da foto de perfil) ──────────────────────── */
+  // Imagem larga que aparece no topo, como no Instagram/bio.site.
+  // Recomendado: proporção 3:1 ou 4:1  (ex: 1200x400px)
+  // Deixe "" para não exibir capa — o fundo escuro padrão permanece.
+  capa:      "capa-toprun.png",    // Ex: "fotos/capa-toprun.jpg"
+ 
+  /* ── COR DE DESTAQUE ────────────────────────────────────────────── */
+  // Escolha a cor principal da marca (usada nos detalhes e hovers)
+  cor:       "#F06B28",   // Laranja DRYVE — troque pela cor da Top Run
+ 
+  /* ── LINKS ──────────────────────────────────────────────────────── */
+  // estilo: "primario"  → fundo cheio com a cor principal
+  //         "secundario"→ borda com a cor principal, fundo transparente
+  //         "escuro"    → fundo preto, texto branco
+  //         "claro"     → fundo branco, texto preto
+  //
+  // icone: "instagram" | "whatsapp" | "youtube" | "tiktok" | "strava"
+  //        | "site" | "email" | "loja" | "calendario" | "estrela" | "play"
+  //        | "seta" (padrão, sem ícone específico)
+  //
+  // badge: texto pequeno opcional ao lado do título. Ex: "Novo!" | "Grátis" | ""
+ 
   links: [
     {
-      label: "Grupo VIP - Top Run 013",
-      url:   "https://chat.whatsapp.com/HLbKiEzT2ACBT3aeixCB3W",
-      style: "default",
-      icon:  "🥇",
+      titulo:    "Grupo VIP - Top Run 013",
+      subtitulo: "Acompanhe as promoções diárias",
+      url:       "https://chat.whatsapp.com/HLbKiEzT2ACBT3aeixCB3W",
+      estilo:    "claro",
+      icone:     "whatsapp",
+      badge:     "Novo!",
     },
     {
-      label: "Loja Virtual - Top Run 013",
-      url:   "https://www.vendanalive.com.br/loja/toprun013",
-      style: "default",
-      icon:  "🛒",
+      titulo:    "Loja Virtual - Top Run 013",
+      subtitulo: "Compre On-line na loja de Santos",
+      url:       "https://www.vendanalive.com.br/loja/toprun013",
+      estilo:    "claro",
+      icone:     "site",
+      badge:     "Novo!",
     },
     {
-      label: "Cadastro para Live",
-      url:   "https://www.vendanalive.com.br/cadastrar/toprun013",
-      style: "default",
-      icon:  "📝",
+      titulo:    "Cadastro para Live",
+      subtitulo: "Realize seu pre-cadastro da nossa live",
+      url:       "https://www.vendanalive.com.br/cadastrar/toprun013",
+      estilo:    "claro",
+      icone:     "estrela",
+      badge:     "",
     },
     {
-      label: "15% OFF - Tribuna Run",
-      url:   "https://www.instagram.com/reel/DXMx3g2jq65/?igsh=MWNtM2FyZTkzZ3M1OQ==",
-      style: "default",
-      icon:  "🏷",
+      titulo:    "15% OFF - Tribuna Run",
+      subtitulo: "Se você é inscrito, corra e aproveite",
+      url:       "https://www.instagram.com/reel/DXMx3g2jq65/?igsh=MWNtM2FyZTkzZ3M1OQ==",
+      estilo:    "claro",
+      icone:     "loja",
+      badge:     "",
     },
     {
-      label: "15% OFF - Dia das Mães",
-      url:   "https://www.instagram.com/reel/DXpJig5ESVI/",
-      style: "default",
-      icon:  "📸",
+      titulo:    "15% OFF - Dia das Mães",
+      subtitulo: "Até o dia 09/04/2026",
+      url:       "https://www.strava.com/",
+      estilo:    "claro",
+      icone:     "loja",
+      badge:     "Corra",
     },
     {
-      label: "Chame no Whatsapp",
-      url:   "https://wa.me/5513996480308",
-      style: "default",
-      icon:  "🏷",
+      titulo:    "Chame no Whatsapp",
+      subtitulo: "Treinos e dicas em vídeo",
+      url:       "https://wa.me/5513996480308",
+      estilo:    "claro",
+      icone:     "whatsapp",
+      badge:     "",
     },
-    // ➕ Adicione mais links copiando um bloco acima
+      // ➕ Copie um bloco acima para adicionar novos links
   ],
-
-  /* --- Rodapé --- */
-  rodapeTexto:     "Powered by",
-  rodapeLink:      "https://www.dryve.fit",
-  rodapeLinkTexto: "Dryve",
+ 
+  /* ── RODAPÉ ─────────────────────────────────────────────────────── */
+  rodape_txt:  "Gerenciado por",
+  rodape_link: "https://www.instagram.com/dryvemkt/",
+  rodape_marca:"DRYVE®",
+ 
 };
-/* ============================================================
-   FIM DA CONFIGURAÇÃO
-   ============================================================ */
-
+ 
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║       FIM DO BLOCO DE CONFIGURAÇÕES — não edite abaixo          ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+</script>
+ 
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  :root {
+    --brand:    #F06B28;
+    --black:    #0d0d0d;
+    --white:    #ffffff;
+    --gray:     #888888;
+    --light:    #f2f0ed;
+    --border:   rgba(255,255,255,0.1);
+    --font-d:   'Barlow Condensed', sans-serif;
+    --font-b:   'Barlow', sans-serif;
+  }
+ 
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-b);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--brand); color: #fff; }
+ 
+  /* ── BACKGROUND ── */
+  .bg-wrap {
+    position: fixed; inset: 0; z-index: 0; overflow: hidden;
+  }
+  /* diagonal stripe texture */
+  .bg-stripes {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      -55deg,
+      rgba(255,255,255,0.018) 0px,
+      rgba(255,255,255,0.018) 1px,
+      transparent 1px,
+      transparent 22px
+    );
+  }
+  /* accent glow at top */
+  .bg-glow {
+    position: absolute; top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 520px; height: 320px;
+    background: radial-gradient(ellipse at center, var(--brand) 0%, transparent 70%);
+    opacity: 0.13; filter: blur(30px);
+    pointer-events: none;
+  }
+  /* bottom accent */
+  .bg-glow-b {
+    position: absolute; bottom: -100px; right: -80px;
+    width: 380px; height: 280px;
+    background: radial-gradient(ellipse at center, var(--brand) 0%, transparent 70%);
+    opacity: 0.07; filter: blur(40px);
+    pointer-events: none;
+  }
+ 
+  /* ── WRAPPER ── */
+  .page-wrap {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 480px;
+    padding: 3rem 1.25rem 4rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0;
+  }
+ 
+  /* ── CAPA (cover image) ── */
+  .cover-wrap {
+    width: 100%;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .cover-wrap img {
+    width: 100%; display: block;
+    aspect-ratio: 3/1; object-fit: cover;
+  }
+  /* gradient fade at bottom so avatar floats nicely */
+  .cover-wrap::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, var(--black));
+    pointer-events: none;
+  }
+  /* avatar repositioned over cover */
+  .has-cover .avatar-wrap {
+    margin-top: -44px;
+    margin-bottom: 0.7rem;
+    z-index: 2;
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px var(--brand), 0 0 0 5px var(--black);
+  }
+  /* no cover: keep original spacing */
+  .page-wrap:not(.has-cover) .avatar-wrap {
+    margin-bottom: 1.1rem;
+  }
+ 
+  /* ── AVATAR / LOGO ── */
+  .avatar-wrap {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    border: 2.5px solid var(--brand);
+    overflow: hidden;
+    margin-bottom: 1.1rem;
+    position: relative;
+    flex-shrink: 0;
+    opacity: 0; animation: pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.05s forwards;
+    background: #1a1a1a;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .avatar-initials {
+    font-family: var(--font-d); font-size: 1.9rem; font-weight: 900;
+    letter-spacing: 0.04em; color: var(--brand); line-height: 1;
+    user-select: none;
+  }
+  /* pulse ring */
+  .avatar-ring {
+    position: absolute; inset: -6px; border-radius: 50%;
+    border: 1.5px solid var(--brand);
+    opacity: 0; animation: ring-pulse 3s ease-in-out 1.5s infinite;
+  }
+  @keyframes ring-pulse {
+    0%   { opacity: 0; transform: scale(0.9); }
+    30%  { opacity: 0.5; }
+    100% { opacity: 0; transform: scale(1.2); }
+  }
+ 
+  /* ── NAME ── */
+  .profile-name {
+    font-family: var(--font-d); font-weight: 900;
+    font-size: 2.4rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--white); line-height: 1; margin-bottom: 0.3rem;
+    text-align: center;
+    opacity: 0; animation: fu 0.5s ease 0.15s forwards;
+  }
+  .profile-slogan {
+    font-family: var(--font-d); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--brand); margin-bottom: 0.8rem; text-align: center;
+    opacity: 0; animation: fu 0.5s ease 0.22s forwards;
+  }
+  .profile-bio {
+    font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.42);
+    text-align: center; line-height: 1.65; max-width: 320px;
+    margin-bottom: 2.2rem;
+    opacity: 0; animation: fu 0.5s ease 0.28s forwards;
+  }
+ 
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%; display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 1.6rem;
+    opacity: 0; animation: fu 0.5s ease 0.32s forwards;
+  }
+  .divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+  .divider-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--brand); }
+ 
+  /* ── LINKS ── */
+  .links-list {
+    width: 100%; display: flex; flex-direction: column; gap: 0.7rem;
+    margin-bottom: 2.5rem;
+  }
+ 
+  .link-item {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.95rem 1.1rem;
+    border-radius: 7px;
+    text-decoration: none;
+    position: relative; overflow: hidden;
+    transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+    opacity: 0;
+    /* stagger set by JS */
+  }
+  .link-item.visible { opacity: 1; }
+  .link-item:hover { transform: translateY(-2px) scale(1.01); }
+  .link-item:active { transform: scale(0.98); }
+ 
+  /* ripple on tap */
+  .link-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(255,255,255,0.06);
+    opacity: 0; transition: opacity 0.15s;
+  }
+  .link-item:active::after { opacity: 1; }
+ 
+  /* estilos de fundo */
+  .link-item.primario {
+    background: var(--brand);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  }
+  .link-item.primario:hover { box-shadow: 0 8px 28px color-mix(in srgb, var(--brand) 50%, transparent); }
+  .link-item.secundario {
+    background: transparent;
+    border: 1.5px solid var(--brand);
+  }
+  .link-item.secundario:hover { background: rgba(255,255,255,0.04); }
+  .link-item.escuro {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .link-item.escuro:hover { border-color: rgba(255,255,255,0.2); background: #222; box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+  .link-item.claro {
+    background: var(--white);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .link-item.claro:hover { box-shadow: 0 6px 22px rgba(255,255,255,0.12); }
+ 
+  /* ícone wrapper */
+  .link-icon {
+    width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .primario  .link-icon { background: rgba(0,0,0,0.2); }
+  .secundario .link-icon { background: rgba(255,255,255,0.06); }
+  .escuro    .link-icon { background: rgba(255,255,255,0.06); }
+  .claro     .link-icon { background: rgba(0,0,0,0.07); }
+ 
+  /* ícone svg cor */
+  .primario  .link-icon svg { stroke: #fff; fill: none; }
+  .secundario .link-icon svg { stroke: var(--brand); fill: none; }
+  .escuro    .link-icon svg { stroke: rgba(255,255,255,0.7); fill: none; }
+  .claro     .link-icon svg { stroke: #333; fill: none; }
+  /* ícones filled */
+  .primario  .link-icon svg.filled { fill: #fff; stroke: none; }
+  .secundario .link-icon svg.filled { fill: var(--brand); stroke: none; }
+  .escuro    .link-icon svg.filled { fill: rgba(255,255,255,0.7); stroke: none; }
+  .claro     .link-icon svg.filled { fill: #333; stroke: none; }
+ 
+  /* textos */
+  .link-text { flex: 1; min-width: 0; }
+  .link-titulo {
+    font-family: var(--font-d); font-weight: 800;
+    font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase;
+    line-height: 1; margin-bottom: 0.18rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .link-sub {
+    font-size: 0.75rem; font-weight: 300;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    line-height: 1;
+  }
+ 
+  /* cores de texto por estilo */
+  .primario  .link-titulo { color: #fff; }
+  .primario  .link-sub    { color: rgba(255,255,255,0.65); }
+  .secundario .link-titulo{ color: #fff; }
+  .secundario .link-sub   { color: rgba(255,255,255,0.4); }
+  .escuro    .link-titulo  { color: #fff; }
+  .escuro    .link-sub     { color: rgba(255,255,255,0.4); }
+  .claro     .link-titulo  { color: #111; }
+  .claro     .link-sub     { color: #777; }
+ 
+  /* badge */
+  .link-badge {
+    font-family: var(--font-d); font-size: 0.62rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.18rem 0.5rem; border-radius: 3px; flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .primario  .link-badge { background: rgba(0,0,0,0.25); color: #fff; }
+  .secundario .link-badge{ background: var(--brand); color: #fff; }
+  .escuro    .link-badge  { background: var(--brand); color: #fff; }
+  .claro     .link-badge  { background: #111; color: #fff; }
+ 
+  /* seta */
+  .link-arrow {
+    flex-shrink: 0; opacity: 0.4;
+    transition: transform 0.18s, opacity 0.18s;
+  }
+  .link-item:hover .link-arrow { transform: translateX(3px); opacity: 0.8; }
+  .primario  .link-arrow svg { stroke: #fff; fill: none; }
+  .secundario .link-arrow svg { stroke: #fff; fill: none; }
+  .escuro    .link-arrow svg { stroke: #fff; fill: none; }
+  .claro     .link-arrow svg { stroke: #333; fill: none; }
+ 
+  /* ── FOOTER ── */
+  .page-footer {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; color: rgba(255,255,255,0.2);
+    font-weight: 300;
+    opacity: 0; animation: fu 0.5s ease 0.8s forwards;
+  }
+  .page-footer a {
+    font-family: var(--font-d); font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .page-footer a:hover { color: var(--brand); }
+ 
+  /* ── ANIMATIONS ── */
+  @keyframes fu  { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pop { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+ 
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    .page-wrap { padding: 2.5rem 1rem 3.5rem; }
+    .profile-name { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- FUNDO -->
+<div class="bg-wrap" aria-hidden="true">
+  <div class="bg-stripes"></div>
+  <div class="bg-glow"   id="bg-glow"></div>
+  <div class="bg-glow-b"></div>
+</div>
+ 
+<!-- CONTEÚDO -->
+<div class="page-wrap" id="page-wrap">
+ 
+  <!-- Capa (preenchida pelo JS se CONFIG.capa estiver definida) -->
+  <div id="cover-slot"></div>
+ 
+  <!-- Avatar -->
+  <div class="avatar-wrap" id="avatar-wrap">
+    <div class="avatar-ring"></div>
+    <!-- preenchido pelo JS -->
+  </div>
+ 
+  <!-- Nome -->
+  <div class="profile-name"   id="profile-name"></div>
+  <div class="profile-slogan" id="profile-slogan"></div>
+  <div class="profile-bio"    id="profile-bio"></div>
+ 
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+ 
+  <!-- Links -->
+  <div class="links-list" id="links-list"></div>
+ 
+  <!-- Footer -->
+  <div class="page-footer" id="page-footer"></div>
+ 
+</div>
+ 
+<script>
 (function () {
-  const app = document.getElementById('app');
-
-  function el(tag, cls, html) {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (html) e.innerHTML = html;
-    return e;
+  const C = CONFIG;
+ 
+  /* ── aplica cor da marca como variável CSS ── */
+  document.documentElement.style.setProperty('--brand', C.cor);
+ 
+  /* ── CAPA ── */
+  const coverSlot = document.getElementById('cover-slot');
+  const pageWrap  = document.getElementById('page-wrap');
+  if (C.capa) {
+    coverSlot.innerHTML = `
+      <div class="cover-wrap">
+        <img src="${C.capa}" alt="Capa ${C.nome}" />
+      </div>`;
+    pageWrap.classList.add('has-cover');
+    /* quando tem capa, remove padding-top da page-wrap */
+    pageWrap.style.paddingTop = '0';
   }
-
-  function add(node, delay) {
-    node.classList.add('anim');
-    node.style.animationDelay = delay + 's';
-    app.appendChild(node);
-  }
-
-  /* Avatar */
-  const avatar = el('div', 'lt-avatar');
-  if (CONFIG.logo) {
-    avatar.innerHTML = '<img src="' + CONFIG.logo + '" alt="' + CONFIG.nome + '">';
+ 
+  /* ── meta ── */
+  document.getElementById('page-title').textContent = C.nome + ' · Links';
+  document.getElementById('page-desc').setAttribute('content', C.bio);
+ 
+  /* ── SVG ICONS ── */
+  const ICONS = {
+    instagram: `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" class="filled"/></svg>`,
+    whatsapp:  `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`,
+    youtube:   `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" class="filled"/></svg>`,
+    tiktok:    `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="0" class="filled"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg>`,
+    strava:    `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="0" class="filled"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>`,
+    site:      `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    email:     `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    loja:      `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    calendario:`<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    estrela:   `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    play:      `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="0" class="filled"><polygon points="5,3 19,12 5,21"/></svg>`,
+    seta:      `<svg width="18" height="18" viewBox="0 0 24 24" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>`,
+  };
+  const ARR_SVG = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+ 
+  /* ── AVATAR ── */
+  const avatarWrap = document.getElementById('avatar-wrap');
+  if (C.foto) {
+    avatarWrap.innerHTML = `<div class="avatar-ring"></div><img src="${C.foto}" alt="${C.nome}" />`;
   } else {
-    avatar.textContent = CONFIG.iniciais;
+    const initials = C.nome.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+    avatarWrap.innerHTML = `<div class="avatar-ring"></div><span class="avatar-initials">${initials}</span>`;
   }
-  add(avatar, 0.05);
-
-  /* Nome */
-  const nome = el('div', 'lt-name');
-  nome.textContent = CONFIG.nome;
-  add(nome, 0.10);
-
-  /* Tagline */
-  const tag = el('div', 'lt-tagline');
-  tag.textContent = CONFIG.tagline;
-  add(tag, 0.15);
-
-  /* Divider */
-  const divider = el('div', 'lt-divider');
-  divider.textContent = CONFIG.divider;
-  add(divider, 0.20);
-
-  /* Links */
-  const styleMap = { primary: 'lt-c1', dark: 'lt-dark', default: '' };
-  CONFIG.links.forEach(function (link, i) {
-    const cls = ('lt-btn ' + (styleMap[link.style] || '')).trim();
-    const a = el('a', cls);
-    a.href = link.url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-
-    if (link.icon) {
-      const ic = el('div', 'lt-media-icon');
-      ic.textContent = link.icon;
-      a.appendChild(ic);
-    }
-
-    const lbl = el('span', 'lt-label');
-    lbl.textContent = link.label;
-    a.appendChild(lbl);
-
-    const arr = el('span', 'lt-arrow');
-    arr.textContent = '→';
-    a.appendChild(arr);
-
-    add(a, 0.25 + i * 0.07);
+ 
+  /* ── TEXTOS ── */
+  document.getElementById('profile-name').textContent   = C.nome;
+  document.getElementById('profile-slogan').textContent = C.slogan;
+  document.getElementById('profile-bio').textContent    = C.bio;
+ 
+  /* ── LINKS ── */
+  const list = document.getElementById('links-list');
+  C.links.forEach((link, i) => {
+    const iconSvg = ICONS[link.icone] || ICONS['seta'];
+    const badge   = link.badge ? `<span class="link-badge">${link.badge}</span>` : '';
+    const sub     = link.subtitulo ? `<div class="link-sub">${link.subtitulo}</div>` : '';
+ 
+    const el = document.createElement('a');
+    el.href   = link.url;
+    el.target = '_blank';
+    el.rel    = 'noopener noreferrer';
+    el.className = `link-item ${link.estilo}`;
+    el.style.animationDelay = `${0.35 + i * 0.07}s`;
+    el.innerHTML = `
+      <div class="link-icon">${iconSvg}</div>
+      <div class="link-text">
+        <div class="link-titulo">${link.titulo}</div>
+        ${sub}
+      </div>
+      ${badge}
+      <div class="link-arrow">${ARR_SVG}</div>
+    `;
+ 
+    /* stagger entrance */
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.2s ease, filter 0.2s ease';
+      el.style.opacity    = '1';
+      el.style.transform  = 'translateY(0)';
+    }, 350 + i * 70);
+ 
+    list.appendChild(el);
   });
-
-  /* Rodapé */
-  const ft = el('div', 'lt-footer');
-  ft.innerHTML = CONFIG.rodapeTexto + ' <a href="' + CONFIG.rodapeLink + '" target="_blank" rel="noopener">' + CONFIG.rodapeLinkTexto + '</a>';
-  add(ft, 0.25 + CONFIG.links.length * 0.07 + 0.05);
-
-  document.title = CONFIG.nome + ' | Links';
+ 
+  /* ── FOOTER ── */
+  document.getElementById('page-footer').innerHTML = `
+    ${C.rodape_txt}&nbsp;
+    <a href="${C.rodape_link}" target="_blank" rel="noopener">${C.rodape_marca}</a>
+  `;
+ 
 })();
 </script>
 </body>
