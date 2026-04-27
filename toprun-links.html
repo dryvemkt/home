@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Run | Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --c1:      #E63329;
+      --c1-dark: #B52720;
+      --dark:    #111111;
+      --gray:    #9e9d9d;
+      --white:   #FFFFFF;
+      --border:  rgba(17,17,17,0.1);
+      --font-d:  'Barlow Condensed', sans-serif;
+      --font-b:  'Barlow', sans-serif;
+    }
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: var(--font-b);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--c1);
+      z-index: 10;
+    }
+
+    .lt-wrap {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lt-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--c1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lt-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .lt-name {
+      font-family: var(--font-d);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .lt-tagline {
+      font-family: var(--font-d);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    .lt-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-d);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .lt-divider::before,
+    .lt-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .lt-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      width: 100%;
+      padding: 0.85rem 1.4rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-family: var(--font-d);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--dark);
+      transition: transform 0.18s, box-shadow 0.22s, background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .lt-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+      border-color: var(--c1);
+      color: var(--c1);
+    }
+    .lt-btn.lt-c1 { background: var(--c1); color: #fff; border-color: var(--c1); }
+    .lt-btn.lt-c1:hover { background: var(--c1-dark); border-color: var(--c1-dark); box-shadow: 0 8px 28px rgba(230,51,41,0.35); color: #fff; }
+    .lt-btn.lt-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .lt-btn.lt-dark:hover { background: #222; box-shadow: 0 8px 28px rgba(0,0,0,0.3); color: #fff; }
+
+    .lt-media-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.07);
+      font-size: 1rem;
+    }
+    .lt-btn.lt-c1 .lt-media-icon,
+    .lt-btn.lt-dark .lt-media-icon { background: rgba(255,255,255,0.15); }
+
+    .lt-label { flex: 1; }
+    .lt-arrow { opacity: 0.45; flex-shrink: 0; font-size: 0.9rem; }
+    .lt-btn:hover .lt-arrow { opacity: 1; }
+
+    .lt-footer {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-align: center;
+    }
+    .lt-footer a { color: var(--c1); text-decoration: none; font-weight: 600; }
+    .lt-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .lt-btn { padding: 0.75rem 1.1rem; }
+    }
+
+    @keyframes fu { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .anim { opacity: 0; animation: fu 0.5s ease forwards; }
+  </style>
+</head>
+<body>
+
+<div class="lt-wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   SEÇÃO DE CONFIGURAÇÃO — edite aqui
+   ============================================================ */
+const CONFIG = {
+
+  /* --- Identidade --- */
+  nome:     "Top Run",
+  tagline:  "Cupons e novidades oficiais",
+  logo:     "",          // URL de imagem (deixe "" para usar as iniciais)
+  iniciais: "TR",
+
+  /* --- Label do separador de seção --- */
+  divider: "Links",
+
+  /* --- Links ---
+     style: "default" | "primary" | "dark"
+     icon:  emoji ou texto curto (ex: "🏃" "📱")
+            deixe "" para não exibir ícone
+  */
+  links: [
+    {
+      label: "Clube Strava — Top Run",
+      url:   "https://strava.app.link/a5D168uvz0b",
+      style: "dark",
+      icon:  "🏃",
+    },
+    {
+      label: "Top Run — Loja Oficial",
+      url:   "https://www.toprunoficial.com",
+      style: "primary",
+      icon:  "🛒",
+    },
+    {
+      label: "Grupo VIP Top Run Santos",
+      url:   "https://chat.whatsapp.com/HLbKiEzT2ACBT3aeixCB3W",
+      style: "dark",
+      icon:  "💬",
+    },
+    {
+      label: "Parcerias — WhatsApp Dryve",
+      url:   "https://wa.me/5513997528373",
+      style: "dark",
+      icon:  "📲",
+    },
+    {
+      label: "Instagram Top Run",
+      url:   "https://instagram.com/toprunoficial",
+      style: "default",
+      icon:  "📸",
+    },
+    {
+      label: "E-mail",
+      url:   "mailto:contato@toprunoficial.com",
+      style: "default",
+      icon:  "✉️",
+    },
+    // ➕ Adicione mais links copiando um bloco acima
+  ],
+
+  /* --- Rodapé --- */
+  rodapeTexto:     "Powered by",
+  rodapeLink:      "https://www.dryve.com.br",
+  rodapeLinkTexto: "Dryve",
+};
+/* ============================================================
+   FIM DA CONFIGURAÇÃO
+   ============================================================ */
+
+(function () {
+  const app = document.getElementById('app');
+
+  function el(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html) e.innerHTML = html;
+    return e;
+  }
+
+  function add(node, delay) {
+    node.classList.add('anim');
+    node.style.animationDelay = delay + 's';
+    app.appendChild(node);
+  }
+
+  /* Avatar */
+  const avatar = el('div', 'lt-avatar');
+  if (CONFIG.logo) {
+    avatar.innerHTML = '<img src="' + CONFIG.logo + '" alt="' + CONFIG.nome + '">';
+  } else {
+    avatar.textContent = CONFIG.iniciais;
+  }
+  add(avatar, 0.05);
+
+  /* Nome */
+  const nome = el('div', 'lt-name');
+  nome.textContent = CONFIG.nome;
+  add(nome, 0.10);
+
+  /* Tagline */
+  const tag = el('div', 'lt-tagline');
+  tag.textContent = CONFIG.tagline;
+  add(tag, 0.15);
+
+  /* Divider */
+  const divider = el('div', 'lt-divider');
+  divider.textContent = CONFIG.divider;
+  add(divider, 0.20);
+
+  /* Links */
+  const styleMap = { primary: 'lt-c1', dark: 'lt-dark', default: '' };
+  CONFIG.links.forEach(function (link, i) {
+    const cls = ('lt-btn ' + (styleMap[link.style] || '')).trim();
+    const a = el('a', cls);
+    a.href = link.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+
+    if (link.icon) {
+      const ic = el('div', 'lt-media-icon');
+      ic.textContent = link.icon;
+      a.appendChild(ic);
+    }
+
+    const lbl = el('span', 'lt-label');
+    lbl.textContent = link.label;
+    a.appendChild(lbl);
+
+    const arr = el('span', 'lt-arrow');
+    arr.textContent = '→';
+    a.appendChild(arr);
+
+    add(a, 0.25 + i * 0.07);
+  });
+
+  /* Rodapé */
+  const ft = el('div', 'lt-footer');
+  ft.innerHTML = CONFIG.rodapeTexto + ' <a href="' + CONFIG.rodapeLink + '" target="_blank" rel="noopener">' + CONFIG.rodapeLinkTexto + '</a>';
+  add(ft, 0.25 + CONFIG.links.length * 0.07 + 0.05);
+
+  document.title = CONFIG.nome + ' | Links';
+})();
+</script>
+</body>
+</html>
