@@ -185,6 +185,27 @@
     .alc-stats { display: flex; gap: 1.2rem; }
     .alc-st { display: flex; align-items: center; gap: 0.3rem; font-family: var(--font-d); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; color: var(--dark); }
     .alc-st svg { opacity: 0.4; }
+    .alc-body-actions { display: flex; gap: 0.5rem; margin-top: 0.9rem; }
+    .alc-ig-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      background: var(--c1); color: #fff; text-decoration: none;
+      padding: 0.55rem 0.9rem; border-radius: 4px; flex: 1;
+      font-family: var(--font-d); font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .alc-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
+    .alc-watch-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      background: transparent; color: var(--dark); text-decoration: none;
+      padding: 0.55rem 0.9rem; border-radius: 4px; flex: 1;
+      border: 1.5px solid var(--border);
+      font-family: var(--font-d); font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+      cursor: pointer; background: none;
+    }
+    .alc-watch-btn:hover { border-color: var(--c1); color: var(--c1); }
 
     /* ── PARCERIAS ── */
     #parcerias { background: var(--white); }
@@ -386,15 +407,16 @@
       font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: #fff;
     }
     .modal-card-st svg { opacity: 0.5; }
-    .modal-card-ig-btn {
+    .modal-card-ig-btn, button.modal-card-ig-btn {
       display: flex; align-items: center; justify-content: center; gap: 0.6rem;
       background: var(--c1); color: #fff; text-decoration: none;
-      padding: 0.85rem 1.2rem; border-radius: 5px;
+      padding: 0.85rem 1.2rem; border-radius: 5px; width: 100%;
       font-family: var(--font-d); font-size: 0.95rem; font-weight: 800;
       letter-spacing: 0.07em; text-transform: uppercase;
       transition: background 0.2s, transform 0.15s;
+      cursor: pointer; border: none;
     }
-    .modal-card-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
+    .modal-card-ig-btn:hover, button.modal-card-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
 
     /* ── SIDEBAR (info panel no player mode) ── */
     .modal-info-side {
@@ -436,15 +458,16 @@
       font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: #fff;
     }
     .modal-info-st svg { opacity: 0.4; }
-    .modal-info-ig-btn {
+    .modal-info-ig-btn, button.modal-info-ig-btn {
       display: flex; align-items: center; justify-content: center; gap: 0.6rem;
       background: var(--c1); color: #fff; text-decoration: none;
       padding: 0.75rem 1rem; border-radius: 5px;
       font-family: var(--font-d); font-size: 0.85rem; font-weight: 800;
       letter-spacing: 0.07em; text-transform: uppercase;
       transition: background 0.2s, transform 0.15s;
+      cursor: pointer; border: none; width: 100%;
     }
-    .modal-info-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
+    .modal-info-ig-btn:hover, button.modal-info-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
 
     /* ── CLOSE BUTTON ── */
     .modal-close {
@@ -523,6 +546,22 @@
       .aud-grid { grid-template-columns: 1fr; }
       .ct-in { grid-template-columns: 1fr; }
       .hb-side-or { display: none; }
+      /* Modal mobile — empilha vídeo + info */
+      .modal-box.mode-player {
+        flex-direction: column;
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 12px 12px 0 0;
+        align-self: flex-end;
+        overflow-y: auto;
+      }
+      .modal-video-side { min-height: 260px; max-height: 55vw; }
+      .modal-info-side {
+        width: 100%; border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.07);
+      }
+      #post-modal { align-items: flex-end; padding: 0; }
+      .modal-box.mode-card { max-width: 100%; border-radius: 12px 12px 0 0; align-self: flex-end; }
     }
     @media (max-width: 600px) {
       .met-grid { grid-template-columns: 1fr 1fr; }
@@ -534,6 +573,7 @@
       .hb-bottom-strip { gap: 1rem; }
       .hb-ig-badge { margin-left: 0; }
       .lt-btn { padding: 0.75rem 1.1rem; }
+      .modal-video-side { min-height: 220px; max-height: 50vw; }
     }
   </style>
 </head>
@@ -634,9 +674,9 @@
       profile_photo: "vini-perfil.jpg",
 
       // Screenshots dos 3 posts de destaque (proporção 1:1 recomendada)
-      post_1: "vini-destaque-1.jpg",   // ex: "post-destaque-1.jpg"
-      post_2: "vini-destaque-2.jpg",   // ex: "post-destaque-2.jpg"
-      post_3: "vini-destaque-3.jpg",   // ex: "post-destaque-3.jpg"
+      post_1: "vini-destaque-1.png",   // ex: "post-destaque-1.jpg"
+      post_2: "vini-destaque-2.png",   // ex: "post-destaque-2.jpg"
+      post_3: "vini-destaque-3.png",   // ex: "post-destaque-3.jpg"
 
       // Vídeos dos posts — se preenchido, abre player no modal
       // Suba o .mp4 na pasta media/ do GitHub e coloque o nome aqui
@@ -687,13 +727,6 @@
       {
         label: "Top Run - CUPOM VINI10",
         url:   "https://www.toprunoficial.com",
-        style: "dark",
-        icon:  "",
-        photo: "",
-      },
-      {
-        label: "Tangerina Suplementos - CUPOM VINI10",
-        url:   "https://www.instagram.com/tangerina.emporio",
         style: "dark",
         icon:  "",
         photo: "",
@@ -784,33 +817,33 @@
         badge:        "🔥 Top 1",
         badge_color:  "primary",  // "primary" | "teal" | "dark"
         type_color:   "c2",       // "c2" | "c1" para a label do tipo
-        desc:         "Zerando a cidade - Red Bull",
+        desc:         "5 dicas para quem está iniciando na corrida",
         reach:        "48.2K",
         likes:        "3.1K",
         comments:     "287",
-        ig_url:       "https://www.instagram.com/p/DXaXhakDrw5/",  // ← Cole aqui o link do post no Instagram
+        ig_url:       "",  // ← Cole aqui o link do post no Instagram
       },
       {
-        type:         "Reels",
+        type:         "Carrossel",
         badge:        "Top 2",
         badge_color:  "teal",
         type_color:   "c1",
-        desc:         "Interação com o publico",
+        desc:         "Reagindo a minha planilha de treino",
         reach:        "31.7K",
         likes:        "2.4K",
         comments:     "198",
-        ig_url:       "https://www.instagram.com/p/DWeP0_BRTLL/",  // ← Cole aqui o link do post no Instagram
+        ig_url:       "",  // ← Cole aqui o link do post no Instagram
       },
       {
-        type:         "Reels",
+        type:         "Stories Destaque",
         badge:        "Top 3",
         badge_color:  "dark",
         type_color:   "c2",
-        desc:         "React de recebidos - corrida Track & Field",
+        desc:         "Fui selecionado para RedBull Zerando a cidade",
         reach:        "22.5K",
         likes:        "1.9K",
         comments:     "134",
-        ig_url:       "https://www.instagram.com/p/DWE36H_jtA0/",  // ← Cole aqui o link do post no Instagram
+        ig_url:       "",  // ← Cole aqui o link do post no Instagram
       },
     ],
 
@@ -1185,6 +1218,10 @@
               <span class="alc-st">${SVG_HEART} ${p.likes}</span>
               <span class="alc-st">${SVG_CHAT} ${p.comments}</span>
             </div>
+            <div class="alc-body-actions">
+              ${isClickable ? `<button class="alc-watch-btn" data-post-idx="${i}">${hasVideo ? `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg> Assistir` : `${SVG_IG} Ver no Instagram`}</button>` : ''}
+              ${p.ig_url ? `<a class="alc-ig-btn" data-ig-url="${p.ig_url}" href="${p.ig_url}" target="_blank" rel="noopener">${SVG_IG} Instagram</a>` : ''}
+            </div>
           </div>
         </div>`;
     }).join('');
@@ -1197,9 +1234,42 @@
       <div class="alc-grid reveal">${postsHtml}</div>
     `;
 
-    /* bind click on each clickable thumb */
+    /* ── helper: abre app do Instagram nativo, fallback para web ── */
+    function openIgLink(url) {
+      if (!url) return;
+      // Extrai o path do post (ex: /p/CODIGO/ ou /reel/CODIGO/)
+      const match = url.match(/instagram\.com(\/.+)/);
+      const path  = match ? match[1] : null;
+      if (path && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        // Tenta abrir o app nativo
+        const appUrl = `instagram://media?id=0`; // fallback genérico
+        const deepUrl = `instagram:/${path}`;
+        const start = Date.now();
+        window.location.href = deepUrl;
+        setTimeout(() => {
+          if (Date.now() - start < 1500) {
+            window.open(url, '_blank', 'noopener');
+          }
+        }, 700);
+      } else {
+        window.open(url, '_blank', 'noopener');
+      }
+    }
+
+    /* bind cliques nos thumbs */
     document.querySelectorAll('.alc-thumb-link.clickable').forEach(el => {
       el.addEventListener('click', () => openModal(parseInt(el.dataset.postIdx)));
+    });
+    /* bind botões "Assistir" no card body */
+    document.querySelectorAll('.alc-watch-btn').forEach(el => {
+      el.addEventListener('click', () => openModal(parseInt(el.dataset.postIdx)));
+    });
+    /* bind botões IG no card body — deep link */
+    document.querySelectorAll('.alc-ig-btn').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openIgLink(el.dataset.igUrl);
+      });
     });
 
     /* ══════════════════════════════════════════════════════════════════
@@ -1214,6 +1284,11 @@
       const avatarHtml = profilePic ? `<img src="${profilePic}" alt="${C.brand.handle}" />` : '';
       const modal = document.getElementById('post-modal');
       const box   = document.getElementById('modal-box');
+
+      // botão IG com deep link (usado dentro do modal)
+      const igBtnHtml = p.ig_url
+        ? `<button class="modal-ig-deep-btn" data-ig-url="${p.ig_url}">${SVG_IG}&nbsp;Ver no Instagram</button>`
+        : '';
 
       if (hasVideo) {
         /* ── PLAYER MODE ── */
@@ -1245,7 +1320,7 @@
                 <div class="modal-info-st">${SVG_HEART} <strong style="margin-left:0.2rem">${p.likes}</strong>&nbsp;curtidas</div>
                 <div class="modal-info-st">${SVG_CHAT} <strong style="margin-left:0.2rem">${p.comments}</strong>&nbsp;comentários</div>
               </div>
-              ${p.ig_url ? `<a href="${p.ig_url}" target="_blank" rel="noopener" class="modal-info-ig-btn">${SVG_IG}&nbsp;Ver no Instagram</a>` : ''}
+              ${igBtnHtml}
             </div>
           </div>`;
 
@@ -1259,7 +1334,7 @@
         video.play().catch(() => {});
 
       } else {
-        /* ── CARD MODE (sem vídeo, abre card estilo IG com link) ── */
+        /* ── CARD MODE ── */
         const thumbHtml = postImg
           ? `<img src="${postImg}" alt="${p.type}" style="width:100%;height:100%;object-fit:cover;display:block;" />`
           : `<div class="modal-card-thumb-ph">${ICONS.photo_ph}</div>`;
@@ -1282,7 +1357,7 @@
               <div class="modal-card-st">${SVG_CHAT} ${p.comments}</div>
             </div>
             ${p.ig_url
-              ? `<a href="${p.ig_url}" target="_blank" rel="noopener" class="modal-card-ig-btn">${SVG_IG}&nbsp;Ver post no Instagram</a>`
+              ? `<button class="modal-card-ig-btn modal-ig-deep-btn" data-ig-url="${p.ig_url}">${SVG_IG}&nbsp;Ver post no Instagram</button>`
               : `<p style="font-family:var(--font-d);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-align:center;">Link não disponível</p>`}
           </div>`;
       }
@@ -1292,6 +1367,17 @@
       document.getElementById('modal-close-btn').addEventListener('click', closeModal);
       document.getElementById('modal-backdrop').addEventListener('click', closeModal);
       document.addEventListener('keydown', onKeyDown);
+
+      /* bind deep link buttons dentro do modal */
+      box.querySelectorAll('.modal-ig-deep-btn').forEach(btn => {
+        btn.addEventListener('click', () => openIgLink(btn.dataset.igUrl));
+      });
+      /* estilos inline para o botão (herda modal-info-ig-btn / modal-card-ig-btn via CSS) */
+      box.querySelectorAll('.modal-ig-deep-btn').forEach(btn => {
+        btn.style.cursor = 'pointer';
+        btn.style.border = 'none';
+        btn.style.width  = '100%';
+      });
     }
 
     function closeModal() {
