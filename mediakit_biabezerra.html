@@ -40,20 +40,20 @@
     .nav-badge { background: var(--c1); color: #fff; padding: 0.35rem 0.9rem; border-radius: 3px; font-family: var(--font-d); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 
     /* ── HERO ── */
-    #hero-banner { min-height: 100vh; padding-top: 80px; background: var(--dark); display: grid; grid-template-rows: 1fr auto; position: relative; overflow: hidden; }
+    #hero-banner { min-height: auto; padding-top: 80px; background: var(--dark); display: grid; grid-template-rows: 1fr auto; position: relative; overflow: hidden; }
     .hb-bg-pat { position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 18px); z-index: 0; }
     .hb-accent-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--c1) 0%, var(--c2) 100%); z-index: 2; }
     .hb-side-or { position: absolute; right: 0; top: 0; bottom: 0; width: 38vw; background: var(--c1); clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0; opacity: 0; animation: fi 0.9s ease 0.3s forwards; }
     .hb-side-pat { position: absolute; right: 0; top: 0; bottom: 0; width: 38vw; background-image: repeating-linear-gradient(-45deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 18px); clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%); z-index: 1; }
-    .hb-inner { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: center; padding: 5rem 5vw; max-width: 700px; }
-    .hb-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 2rem; opacity: 0; animation: fu 0.6s ease 0.1s forwards; }
+    .hb-inner { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: center; padding: 2.2rem 5vw 1.8rem; max-width: 700px; }
+    .hb-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; opacity: 0; animation: fu 0.6s ease 0.1s forwards; }
     .hb-eyebrow-bar { width: 30px; height: 2px; background: var(--c2); }
     .hb-eyebrow-text { font-family: var(--font-d); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c2); }
     .hb-name { font-family: var(--font-d); font-weight: 900; font-size: clamp(1rem, 2.5vw, 1.5rem); letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.6rem; opacity: 0; animation: fu 0.6s ease 0.15s forwards; }
-    .hb-title { font-family: var(--font-d); font-weight: 900; font-size: clamp(3.5rem, 7vw, 7.5rem); line-height: 0.88; text-transform: uppercase; color: #fff; margin-bottom: 2rem; opacity: 0; animation: fu 0.7s ease 0.2s forwards; }
+    .hb-title { font-family: var(--font-d); font-weight: 900; font-size: clamp(2.6rem, 5vw, 5rem); line-height: 0.88; text-transform: uppercase; color: #fff; margin-bottom: 1rem; opacity: 0; animation: fu 0.7s ease 0.2s forwards; }
     .hb-title .c-c1 { color: var(--c1); }
     .hb-title .c-c2 { color: var(--c2); }
-    .hb-bio { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 480px; margin-bottom: 2.5rem; font-weight: 300; border-left: 3px solid var(--c1); padding-left: 1.2rem; opacity: 0; animation: fu 0.7s ease 0.35s forwards; }
+    .hb-bio { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 480px; margin-bottom: 1.4rem; font-weight: 300; border-left: 3px solid var(--c1); padding-left: 1.2rem; opacity: 0; animation: fu 0.7s ease 0.35s forwards; }
     .hb-links { display: flex; flex-wrap: wrap; gap: 0.75rem; opacity: 0; animation: fu 0.7s ease 0.5s forwards; }
     .link-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.4rem; font-family: var(--font-d); font-size: 0.92rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: transform 0.15s, box-shadow 0.2s, background 0.2s; white-space: nowrap; }
     .link-btn:hover { transform: translateY(-2px); }
@@ -65,7 +65,7 @@
     .lb-outline:hover { border-color: #fff; box-shadow: 0 8px 24px rgba(255,255,255,0.1); }
     .lb-dark { background: var(--dark); color: #fff; border: 2px solid rgba(255,255,255,0.15); }
     .lb-dark:hover { background: #222; }
-    .hb-bottom-strip { position: relative; z-index: 3; display: flex; align-items: center; gap: 2rem; padding: 1.5rem 5vw; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
+    .hb-bottom-strip { position: relative; z-index: 3; display: flex; align-items: center; gap: 2rem; padding: 1rem 5vw; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
     .hb-stat { display: flex; align-items: baseline; gap: 0.4rem; }
     .hb-stat-n { font-family: var(--font-d); font-size: 1.8rem; font-weight: 900; color: var(--c1); }
     .hb-stat-l { font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
@@ -254,7 +254,264 @@
     .ft-ig { display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-d); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c2); text-decoration: none; transition: color 0.2s; }
     .ft-ig:hover { color: var(--c1); }
 
-    /* MOBILE */
+    /* ── MODAL ── */
+    #post-modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    #post-modal.open { display: flex; }
+    .modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      animation: modal-fade-in 0.2s ease;
+    }
+    @keyframes modal-fade-in { from{opacity:0} to{opacity:1} }
+
+    .modal-box {
+      position: relative; z-index: 2;
+      display: flex;
+      width: 100%; max-width: 860px;
+      max-height: 90vh;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      animation: modal-slide-in 0.25s ease;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    }
+    @keyframes modal-slide-in { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+
+    /* ── PLAYER MODE ── */
+    .modal-box.mode-player { flex-direction: row; }
+    .modal-video-side {
+      flex: 1; background: #000;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; min-height: 400px;
+    }
+    .modal-video-side video {
+      width: 100%; height: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+    /* IG chrome top bar on video */
+    .modal-ig-bar {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+      z-index: 3;
+    }
+    .modal-ig-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 2px solid var(--c1); overflow: hidden; flex-shrink: 0;
+      background: #222;
+    }
+    .modal-ig-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-ig-handle {
+      font-family: var(--font-d); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; color: #fff;
+    }
+    .modal-ig-logo {
+      margin-left: auto;
+      opacity: 0.7;
+    }
+    /* video controls overlay */
+    .modal-play-btn {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2;
+      opacity: 1; transition: opacity 0.3s;
+    }
+    .modal-play-btn.hidden { opacity: 0; pointer-events: none; }
+    .modal-play-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .modal-play-circle:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+
+    /* ── CARD MODE (sem vídeo) ── */
+    .modal-box.mode-card {
+      flex-direction: column;
+      max-width: 420px;
+      background: #1a1a1a;
+    }
+    .modal-card-thumb {
+      width: 100%; aspect-ratio: 1/1; overflow: hidden;
+      position: relative; background: #000; flex-shrink: 0;
+    }
+    .modal-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-card-thumb-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #111, #222);
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* IG header inside card */
+    .modal-card-header {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-card-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--c1); overflow: hidden; flex-shrink: 0; background: #333;
+    }
+    .modal-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-card-handle {
+      font-family: var(--font-d); font-size: 0.95rem; font-weight: 800;
+      letter-spacing: 0.04em; color: #fff; flex: 1;
+    }
+    /* card body */
+    .modal-card-body { padding: 1.2rem 1rem; }
+    .modal-card-type {
+      font-family: var(--font-d); font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--c2);
+      margin-bottom: 0.4rem;
+    }
+    .modal-card-desc {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .modal-card-stats {
+      display: flex; gap: 1.2rem; margin-bottom: 1.2rem;
+      padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-card-st {
+      display: flex; align-items: center; gap: 0.3rem;
+      font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: #fff;
+    }
+    .modal-card-st svg { opacity: 0.5; }
+    .modal-card-ig-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      background: var(--c1); color: #fff; text-decoration: none;
+      padding: 0.85rem 1.2rem; border-radius: 5px;
+      font-family: var(--font-d); font-size: 0.95rem; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .modal-card-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
+
+    /* ── SIDEBAR (info panel no player mode) ── */
+    .modal-info-side {
+      width: 300px; flex-shrink: 0;
+      background: #1a1a1a;
+      display: flex; flex-direction: column;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-info-header {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-info-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--c1); overflow: hidden; flex-shrink: 0; background: #333;
+    }
+    .modal-info-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-info-handle {
+      font-family: var(--font-d); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.04em; color: #fff;
+    }
+    .modal-info-body { padding: 1.2rem; flex: 1; overflow-y: auto; }
+    .modal-info-type {
+      font-family: var(--font-d); font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--c2);
+      margin-bottom: 0.5rem;
+    }
+    .modal-info-desc {
+      font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+    .modal-info-stats {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      margin-bottom: 1.4rem; padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .modal-info-st {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-d); font-size: 0.85rem; font-weight: 700; color: #fff;
+    }
+    .modal-info-st svg { opacity: 0.4; }
+    .modal-info-ig-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      background: var(--c1); color: #fff; text-decoration: none;
+      padding: 0.75rem 1rem; border-radius: 5px;
+      font-family: var(--font-d); font-size: 0.85rem; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .modal-info-ig-btn:hover { background: var(--c1-dark); transform: translateY(-1px); }
+
+    /* ── CLOSE BUTTON ── */
+    .modal-close {
+      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      color: #fff;
+    }
+    .modal-close:hover { background: rgba(240,107,40,0.8); transform: scale(1.05); }
+
+    /* ── ALCANCE — thumb clicável ── */
+    .alc-thumb-link { display: block; position: relative; text-decoration: none; }
+    .alc-thumb-link .alc-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s;
+      z-index: 2;
+    }
+    .alc-thumb-link:hover .alc-thumb-overlay { background: rgba(0,0,0,0.45); }
+    .alc-thumb-link:active .alc-thumb-overlay { background: rgba(0,0,0,0.55); }
+    .alc-thumb-overlay-icon {
+      opacity: 0; transform: scale(0.8);
+      transition: opacity 0.25s, transform 0.25s;
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    }
+    .alc-thumb-link:hover .alc-thumb-overlay-icon { opacity: 1; transform: scale(1); }
+    .alc-thumb-link:active .alc-thumb-overlay-icon { opacity: 1; transform: scale(0.95); }
+    .alc-thumb-overlay-icon svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+    .alc-thumb-overlay-icon span {
+      font-family: var(--font-d); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
+    }
+    /* cursor pointer só quando tem link */
+    .alc-thumb-link[href="#"], .alc-thumb-link[href=""] { pointer-events: none; cursor: default; }
+
+    /* ── DICA VISUAL DE PLAY (sempre visível, especialmente no mobile) ── */
+    .alc-play-badge {
+      position: absolute; bottom: 0.7rem; left: 0.7rem; z-index: 3;
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(0,0,0,0.58); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px; padding: 0.28rem 0.7rem 0.28rem 0.45rem;
+      transition: opacity 0.25s;
+    }
+    .alc-play-badge-circle {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--c1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    /* IG badge (sem vídeo) */
+    .alc-play-badge.ig-badge .alc-play-badge-circle { background: transparent; }
+    .alc-play-badge-label {
+      font-family: var(--font-d); font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+      white-space: nowrap;
+    }
+    /* some no hover desktop (o overlay já mostra) */
+    @media (hover: hover) {
+      .alc-thumb-link:hover .alc-play-badge { opacity: 0; }
+    }
+
+
     @media (max-width: 960px) {
       .sobre-grid { grid-template-columns: 1fr; }
       .sobre-photo-wrap { max-width: 320px; }
@@ -313,6 +570,14 @@
 
   <footer id="footer"></footer>
 
+  <!-- ── MODAL PLAYER / CARD ── -->
+  <div id="post-modal" role="dialog" aria-modal="true" aria-label="Post em destaque">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-box" id="modal-box">
+      <!-- preenchido pelo JS ao abrir -->
+    </div>
+  </div>
+
   <script>
   /* ══════════════════════════════════════════════════════════════════
    ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗ 
@@ -330,10 +595,10 @@
 
     /* ── IDENTIDADE ──────────────────────────────────────────────── */
     brand: {
-      name:        "VINI LOZANO",          // Nome da marca/influencer (NAV e footer)
+      name:        "BIA B WEINGERTNER",          // Nome da marca/influencer (NAV e footer)
       registered:  false,             // true = exibe ® após o nome
       eyebrow:     "Media Kit Oficial — Parcerias Fitness",
-      handle:      "@_vinilozano",       // @ exibido no hero e no rodapé do hero
+      handle:      "@biabweingertner",       // @ exibido no hero e no rodapé do hero
       nav_back_url:   "index.html",
       nav_back_label: "Dryve Site",
       nav_badge:   "Abril 2026",
@@ -366,21 +631,27 @@
 
     images: {
       // Foto de perfil — seção "Sobre" (proporção 3:4 recomendada)
-      profile_photo: "vini-perfil.jpg",
-      // ex: "foto-perfil.jpg"
+      profile_photo: "bia-perfil.jpg",
 
       // Screenshots dos 3 posts de destaque (proporção 1:1 recomendada)
-      post_1: "vini-destaque-1.png",   // ex: "post-destaque-1.jpg"
-      post_2: "vini-destaque-2.png",   // ex: "post-destaque-2.jpg"
-      post_3: "vini-destaque-3.png",   // ex: "post-destaque-3.jpg"
+      post_1: "bia-destaque-1.jpg",   // ex: "post-destaque-1.jpg"
+      post_2: "bia-destaque-2.jpg",   // ex: "post-destaque-2.jpg"
+      post_3: "bia-destaque-3.jpg",   // ex: "post-destaque-3.jpg"
+
+      // Vídeos dos posts — se preenchido, abre player no modal
+      // Suba o .mp4 na pasta media/ do GitHub e coloque o nome aqui
+      // Deixe "" para abrir o card com link do Instagram em vez do player
+      video_1: "bia-destaque-1.mp4",   // ex: "reels-corrida.mp4"
+      video_2: "bia-destaque-2.mp4",   // ex: "reels-treino.mp4"
+      video_3: "bia-destaque-3.mp4",   // ex: ""  ← sem vídeo = abre card com link IG
     },
 
     /* ── HERO ────────────────────────────────────────────────────── */
     hero: {
-      slogan_line1: "VINICIUS",           // linha 1 do título grande (branco)
-      slogan_line2: "LOZANO",          // linha 2 (cor primária)
-      slogan_line3: "",          // linha 3 (cor secundária)
-      bio: "Saúde | Lifetyle | Esportes.",
+      slogan_line1: "BIA",           // linha 1 do título grande (branco)
+      slogan_line2: "BEZERRA",          // linha 2 (cor primária)
+      slogan_line3: "WEINGERTNER",          // linha 3 (cor secundária)
+      bio: "Saúde | Lifetyle | Emagrecimento.",
     },
 
     /* ── LINKTREE (seção logo abaixo do hero) ────────────────────── */
@@ -393,15 +664,22 @@
     */
     linktree: [
       {
-        label: "Clube Strava",
-        url:   "https://strava.app.link/a5D168uvz0b",
+        label: "DRYVE - Marketing Esportivo",
+        url:   "https://www.instagram.com/dryvemkt/",
         style: "dark",
-        icon:  "Strava",
+        icon:  "link",
         photo: "",
       },
       {
-        label: "Liquidz - CUPOM VINI10",
-        url:   "https://go.liquidz.com.br/ec/VINI10",
+        label: "Top Run 013 - CUPOM BIA10",
+        url:   "https://www.vendanalive.com.br/loja/toprun013",
+        style: "dark",
+        icon:  "",
+        photo: "",
+      },
+      {
+        label: "Bale Gold Cintas - CUPOM BIABWEIN",
+        url:   "https://www.balegold.com.br/",
         style: "dark",
         icon:  "",
         photo: "",
@@ -414,14 +692,7 @@
         photo: "",
       },
       {
-        label: "Top Run - CUPOM VINI10",
-        url:   "https://www.toprunoficial.com",
-        style: "dark",
-        icon:  "",
-        photo: "",
-      },
-      {
-        label: "Parcerias - Whatsapp Dryve",
+        label: "Parcerias - Whatsapp DRYVE",
         url:   "https://www.wa.me/5513997528373",
         style: "dark",
         icon:  "chat",
@@ -429,7 +700,7 @@
       },
       {
         label: "E-mail",
-        url:   "mailto:contato.vinilozano@dryve.fit",
+        url:   "mailto:contato@dryve.fit",
         style: "dark",
         icon:  "chat",
         photo: "",
@@ -439,33 +710,32 @@
 
     /* ── MARQUEE (faixa deslizante) ──────────────────────────────── */
     marquee_items: [
-      "Fitness", "Lifestyle", "Nutrição", "Performance",
-      "Suplementação", "Treino", "Saúde", "Corpo", "Motivação",
+      "Natação", "Lifestyle", "Nutrição", "Bem-estar", "YOGA", "Pilates"
+      "Rotinas", "Treino", "Saúde", "Corpo", "Motivação", "Superação", "Emagrecimento"
     ],
 
     /* ── SOBRE ───────────────────────────────────────────────────── */
     sobre: {
-      name_lines: ["VINI", "LOZANO"],
+      name_lines: ["BIA", "BEZERRA", "WEINGERTNER"],
       // ↑ Cada item = uma linha; a última fica na cor primária automaticamente
 
       bio: [
-        "Sou Vinicius Lozano, criador de conteúdo focado em corrida e estilo de vida. Corro desde os 17 anos e transformei a pista no meu laboratório diário. Hoje compartilho minha evolução, treinos, desafios e aprendizados para ajudar outros corredores a evoluírem junto comigo.",
-        "Este ano irei correr minha primeira maratona, um passo simbólico dentro da minha jornada e que fortalece ainda mais o propósito por trás dos meus conteúdos.",
-        "Produzo conteúdos que vão desde treinos de base, ritmo e resistência até experiências reais de rua, sempre mostrando a rotina de um futuro maratonista. Meu objetivo é inspirar mais pessoas a correrem, se movimentarem e descobrirem que a corrida pode ser um portal para bem-estar, disciplina e confiança.",
+        "Sou a Bia",
       ],
 
       tags: [
-        { label: "Corrida",        style: "c1" },
+        { label: "Emagrecimento",        style: "c1" },
         { label: "Lifestyle",      style: "c2" },
-        { label: "Saude",          style: "c1" },
-        { label: "Maratona",      style: "bk" },
+        { label: "Yoga",          style: "c1" },
+        { label: "Pilates",      style: "c2" },
+        { label: "Natação",      style: "bk" },
         { label: "Motivação",      style: "c2" },
         // ➕ Adicione mais tags: style pode ser "c1" | "c2" | "bk"
       ],
 
       highlights: [
         { label: "Localização", value: "Santos, SP",  accent: ""   },
-        { label: "No ar desde",  value: "2018",           accent: "tl" },
+        { label: "No ar desde",  value: "2015",           accent: "tl" },
         { label: "Faixa etária", value: "23 anos",        accent: "tl" },
         { label: "Idioma",       value: "Português",      accent: ""   },
       ],
@@ -476,15 +746,15 @@
       updated_label: "Abril 2026",
 
       cards: [
-        { icon: "👥", value: "+9K", label: "Seguidores",      sub: "Total de seguidores no Instagram",         color: "c1", trend: "+2.3%" },
-        { icon: "🔥", value: "8.6%",  label: "Taxa de Engajamento", sub: "Média dos últimos 30 posts",           color: "c2", trend: "+0.8%" },
-        { icon: "👁️", value: "717,8K",   label: "Alcance Médio",    sub: "Por publicação nos últimos 28 dias",      color: "c1", trend: "+5.1%" },
-        { icon: "💬", value: "64,5K",  label: "Impressões / mês", sub: "Visualizações totais nos últimos 28 dias", color: "c2", trend: "+3.4%" },
+        { icon: "👥", value: "+1.8K", label: "Seguidores",      sub: "Total de seguidores no Instagram",         color: "c1", trend: "+2.3%" },
+        { icon: "🔥", value: "5.3%",  label: "Taxa de Engajamento", sub: "Média dos últimos 30 posts",           color: "c2", trend: "+0.8%" },
+        { icon: "👁️", value: "50.2K",   label: "Alcance Médio",    sub: "Por publicação nos últimos 28 dias",      color: "c1", trend: "+5.1%" },
+        { icon: "💬", value: "30.1K",  label: "Impressões / mês", sub: "Visualizações totais nos últimos 28 dias", color: "c2", trend: "+3.4%" },
       ],
 
       gender: {
-        female: { label: "Feminino", pct: 72 },
-        male:   { label: "Masculino", pct: 38 },
+        female: { label: "Feminino", pct: 85 },
+        male:   { label: "Masculino", pct: 15 },
       },
 
       cities: [
@@ -495,36 +765,44 @@
     },
 
     /* ── POSTS DE DESTAQUE ───────────────────────────────────────── */
+    /*
+      ig_url: link direto do post no Instagram.
+              Ex: "https://www.instagram.com/p/CODIGO_DO_POST/"
+              Deixe "" para o post não ter link (não clicável).
+    */
     top_posts: [
       {
         type:         "Reels",
-        badge:        "🔥 Top 1",
+        badge:        "Top 1",
         badge_color:  "primary",  // "primary" | "teal" | "dark"
         type_color:   "c2",       // "c2" | "c1" para a label do tipo
-        desc:         "5 dicas para quem está iniciando na corrida",
-        reach:        "48.2K",
-        likes:        "3.1K",
-        comments:     "287",
+        desc:         "Você só precisa escolher.",
+        reach:        "8.2K",
+        likes:        "250",
+        comments:     "120",
+        ig_url:       "https://www.instagram.com/p/DTEMpvaD20d/",  // ← Cole aqui o link do post no Instagram
       },
       {
-        type:         "Carrossel",
+        type:         "Stories",
         badge:        "Top 2",
         badge_color:  "teal",
         type_color:   "c1",
-        desc:         "Reagindo a minha planilha de treino",
-        reach:        "31.7K",
-        likes:        "2.4K",
+        desc:         "Dieta - Preparando marmitas da semana",
+        reach:        "7K",
+        likes:        "504",
         comments:     "198",
+        ig_url:       "https://www.instagram.com/stories/highlights/17874949044472143/",  // ← Cole aqui o link do post no Instagram
       },
       {
-        type:         "Stories Destaque",
+        type:         "Stories",
         badge:        "Top 3",
         badge_color:  "dark",
         type_color:   "c2",
-        desc:         "Fui selecionado para RedBull Zerando a cidade",
-        reach:        "22.5K",
-        likes:        "1.9K",
+        desc:         "dia de yoga",
+        reach:        "2K",
+        likes:        "1K",
         comments:     "134",
+        ig_url:       "https://www.instagram.com/stories/highlights/17874949044472143/",  // ← Cole aqui o link do post no Instagram
       },
     ],
 
@@ -570,8 +848,7 @@
     */
     brands: [
       { name: "Top Run", category: "Vestúario de alta performance",  logo: "" },
-      { name: "Liquidz", category: "Suplementos", logo: "" },
-      { name: "Asics", category: "Vestuário",    logo: "" },
+      { name: "Bale Gold", category: "Cintas Modeladoras", logo: "" },
       // ➕ Adicione mais marcas aqui
     ],
     brands_note: "Entre em contato para conhecer o portfólio completo de parcerias.",
@@ -837,41 +1114,72 @@
     `;
 
     /* ── ALCANCE ── */
+    const SVG_EYE   = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    const SVG_HEART = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+    const SVG_CHAT  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+    const SVG_IG    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>`;
+    const SVG_CLOSE = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    const SVG_IG_LOGO = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>`;
+    const SVG_PLAY  = `<svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>`;
+
     const postsHtml = C.top_posts.map((p, i) => {
-      const postImg = img(C.images[`post_${i + 1}`]);
+      const postImg  = img(C.images[`post_${i + 1}`]);
+      const videoSrc = img(C.images[`video_${i + 1}`]);
+      const hasVideo = !!videoSrc;
+      const hasLink  = p.ig_url && p.ig_url.trim() !== '';
+      const isClickable = hasVideo || hasLink;
+
       const thumbContent = postImg
         ? `<img src="${postImg}" alt="${p.type}" />`
-        : `<div class="alc-thumb-placeholder">
-            ${ICONS.photo_ph}
-            <span style="font-family:var(--font-d);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Screenshot do post</span>
-           </div>`;
+        : `<div class="alc-thumb-placeholder">${ICONS.photo_ph}<span style="font-family:var(--font-d);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Screenshot do post</span></div>`;
+
+      const overlayIcon = hasVideo
+        ? `<svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(255,255,255,0.95)"><polygon points="5,3 19,12 5,21"/></svg><span>Assistir</span>`
+        : `${SVG_IG_LOGO}<span>Ver no Instagram</span>`;
+
+      const overlay = isClickable ? `
+        <div class="alc-thumb-overlay">
+          <div class="alc-thumb-overlay-icon">${overlayIcon}</div>
+        </div>` : '';
+
+      /* badge sempre visível (dica visual de play para mobile) */
+      const playBadge = isClickable ? (hasVideo ? `
+        <div class="alc-play-badge">
+          <div class="alc-play-badge-circle">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="#fff"><polygon points="2,1 9,5 2,9"/></svg>
+          </div>
+          <span class="alc-play-badge-label">Assistir</span>
+        </div>` : `
+        <div class="alc-play-badge ig-badge">
+          <div class="alc-play-badge-circle">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+          </div>
+          <span class="alc-play-badge-label">Ver no Instagram</span>
+        </div>`) : '';
+
       return `
         <div class="alc-card">
-          <div class="alc-thumb">
-            ${thumbContent}
-            <div class="alc-badge" style="${badgeBg(p.badge_color)}">${p.badge}</div>
+          <div class="alc-thumb-link ${isClickable ? 'clickable' : ''}"
+               ${isClickable ? `data-post-idx="${i}" style="cursor:pointer;display:block;position:relative;"` : 'style="display:block;position:relative;"'}>
+            <div class="alc-thumb">
+              ${thumbContent}
+              <div class="alc-badge" style="${badgeBg(p.badge_color)}">${p.badge}</div>
+              ${playBadge}
+            </div>
+            ${overlay}
           </div>
           <div class="alc-body">
             <div class="alc-type" style="color:var(--${p.type_color === 'c1' ? 'c1' : 'c2'})">${p.type}</div>
             <p class="alc-desc">${p.desc}</p>
             <div class="alc-stats">
-              <span class="alc-st">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                ${p.reach}
-              </span>
-              <span class="alc-st">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                ${p.likes}
-              </span>
-              <span class="alc-st">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                ${p.comments}
-              </span>
+              <span class="alc-st">${SVG_EYE} ${p.reach}</span>
+              <span class="alc-st">${SVG_HEART} ${p.likes}</span>
+              <span class="alc-st">${SVG_CHAT} ${p.comments}</span>
             </div>
           </div>
-        </div>
-      `;
+        </div>`;
     }).join('');
+
     document.getElementById('alcance').innerHTML = `
       <div class="reveal" style="margin-bottom:3rem;">
         <p class="stag">Maior alcance</p>
@@ -879,6 +1187,114 @@
       </div>
       <div class="alc-grid reveal">${postsHtml}</div>
     `;
+
+    /* bind click on each clickable thumb */
+    document.querySelectorAll('.alc-thumb-link.clickable').forEach(el => {
+      el.addEventListener('click', () => openModal(parseInt(el.dataset.postIdx)));
+    });
+
+    /* ══════════════════════════════════════════════════════════════════
+       MODAL ENGINE
+    ══════════════════════════════════════════════════════════════════ */
+    function openModal(idx) {
+      const p         = C.top_posts[idx];
+      const postImg   = img(C.images[`post_${idx + 1}`]);
+      const videoSrc  = img(C.images[`video_${idx + 1}`]);
+      const hasVideo  = !!videoSrc;
+      const profilePic = img(C.images.profile_photo);
+      const avatarHtml = profilePic ? `<img src="${profilePic}" alt="${C.brand.handle}" />` : '';
+      const modal = document.getElementById('post-modal');
+      const box   = document.getElementById('modal-box');
+
+      if (hasVideo) {
+        /* ── PLAYER MODE ── */
+        box.className = 'modal-box mode-player';
+        box.innerHTML = `
+          <button class="modal-close" id="modal-close-btn" aria-label="Fechar">${SVG_CLOSE}</button>
+          <div class="modal-video-side">
+            <div class="modal-ig-bar">
+              <div class="modal-ig-avatar">${avatarHtml}</div>
+              <span class="modal-ig-handle">${C.brand.handle}</span>
+              <span class="modal-ig-logo">${SVG_IG_LOGO}</span>
+            </div>
+            <video id="modal-video" src="${videoSrc}" playsinline loop
+                   style="width:100%;max-height:90vh;object-fit:contain;display:block;"></video>
+            <div class="modal-play-btn" id="modal-play-btn">
+              <div class="modal-play-circle">${SVG_PLAY}</div>
+            </div>
+          </div>
+          <div class="modal-info-side">
+            <div class="modal-info-header">
+              <div class="modal-info-avatar">${avatarHtml}</div>
+              <span class="modal-info-handle">${C.brand.handle}</span>
+            </div>
+            <div class="modal-info-body">
+              <div class="modal-info-type">${p.type}</div>
+              <p class="modal-info-desc">${p.desc}</p>
+              <div class="modal-info-stats">
+                <div class="modal-info-st">${SVG_EYE} <strong style="margin-left:0.2rem">${p.reach}</strong>&nbsp;alcance</div>
+                <div class="modal-info-st">${SVG_HEART} <strong style="margin-left:0.2rem">${p.likes}</strong>&nbsp;curtidas</div>
+                <div class="modal-info-st">${SVG_CHAT} <strong style="margin-left:0.2rem">${p.comments}</strong>&nbsp;comentários</div>
+              </div>
+              ${p.ig_url ? `<a href="${p.ig_url}" target="_blank" rel="noopener" class="modal-info-ig-btn">${SVG_IG}&nbsp;Ver no Instagram</a>` : ''}
+            </div>
+          </div>`;
+
+        const video   = document.getElementById('modal-video');
+        const playBtn = document.getElementById('modal-play-btn');
+        const togglePlay = () => video.paused ? video.play() : video.pause();
+        video.addEventListener('click', togglePlay);
+        playBtn.addEventListener('click', togglePlay);
+        video.addEventListener('play',  () => playBtn.classList.add('hidden'));
+        video.addEventListener('pause', () => playBtn.classList.remove('hidden'));
+        video.play().catch(() => {});
+
+      } else {
+        /* ── CARD MODE (sem vídeo, abre card estilo IG com link) ── */
+        const thumbHtml = postImg
+          ? `<img src="${postImg}" alt="${p.type}" style="width:100%;height:100%;object-fit:cover;display:block;" />`
+          : `<div class="modal-card-thumb-ph">${ICONS.photo_ph}</div>`;
+
+        box.className = 'modal-box mode-card';
+        box.innerHTML = `
+          <button class="modal-close" id="modal-close-btn" aria-label="Fechar">${SVG_CLOSE}</button>
+          <div class="modal-card-header">
+            <div class="modal-card-avatar">${avatarHtml}</div>
+            <span class="modal-card-handle">${C.brand.handle}</span>
+            ${SVG_IG_LOGO}
+          </div>
+          <div class="modal-card-thumb">${thumbHtml}</div>
+          <div class="modal-card-body">
+            <div class="modal-card-type">${p.type}</div>
+            <p class="modal-card-desc">${p.desc}</p>
+            <div class="modal-card-stats">
+              <div class="modal-card-st">${SVG_EYE} ${p.reach}</div>
+              <div class="modal-card-st">${SVG_HEART} ${p.likes}</div>
+              <div class="modal-card-st">${SVG_CHAT} ${p.comments}</div>
+            </div>
+            ${p.ig_url
+              ? `<a href="${p.ig_url}" target="_blank" rel="noopener" class="modal-card-ig-btn">${SVG_IG}&nbsp;Ver post no Instagram</a>`
+              : `<p style="font-family:var(--font-d);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-align:center;">Link não disponível</p>`}
+          </div>`;
+      }
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+      document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', onKeyDown);
+    }
+
+    function closeModal() {
+      const video = document.getElementById('modal-video');
+      if (video) { video.pause(); video.src = ''; }
+      document.getElementById('post-modal').classList.remove('open');
+      document.getElementById('modal-box').innerHTML = '';
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKeyDown);
+    }
+
+    function onKeyDown(e) { if (e.key === 'Escape') closeModal(); }
 
     /* ── PARCERIAS ── */
     const parcHtml = C.parceria_models.map(p => `
